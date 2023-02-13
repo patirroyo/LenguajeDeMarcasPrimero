@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Elementos de un objeto DOCUMENT</title> <!--TODO LO QUE ESTÁ DENTRO DEL OBJETO WINDOW, el objeto sería en minúsuclas pero se pone así para hacerlo bonito en el título-->
+<script language="JavaScript">
+function mostrar(){
+	for(i=0; i<document.all.length;i++)
+		alert(document.all[i].tagName);/*el objeto document tiene dentro todas las marcas desde <html> hasta </html>; es decir que dentro del objeto documento tengo el objeto html, la marca head, title, script, body, dos img.
+		Cuando dentro de un objeto tengo varios objetos, hay que organizarlo: se meten automáticamente en un vector: 0:html, 1:head, 2:title...6:img que se llama "all"
+		cada uno de esos objetos tiene una propiedad que se llama tagName.
+		podemos hacer un bucle que vaya recorriendo ese vector.
+		Hay más vectores en el objeto document: images*/
+	for(i=0;i<document.images.length;i++)
+		alert (document.images[i].tagName);
+
+}
+</script>
+</head>
+<body onload="mostrar()"> 
+<img src="imagenes/cruz.png" height="100">
+<img src="imagenes/circulo.png" height="100">
+</body>
+</html>

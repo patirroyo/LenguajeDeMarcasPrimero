@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Cambiar de clase</title>
+<!--Vamos a declarar estilos por clases, precedidos por . 
+	Position:podemos colocar los elementos en cualquier parte de la pagina sin necesidad de hacer una tabla. Posición de partida la parte superior izquierda, tenemos que dar distancia con la parte izquierda (left) y a la parte superior (top)
+position: absolute
+position: relative-->
+<style type="text/css"> 
+.bloque1{position:absolute; width: 300px; top: 50px; left: 20px; background-color: lemonchiffon}
+.bloque2{position:absolute; width: 300px; top: 50px; left: 400px; background-color: lightcoral}
+
+</style>
+<script language="JavaScript">
+function intercambio(){
+	//alert(b2.className);//propiedad del objeto mostrada por pantalla
+	if(b1.className == "bloque1"){	
+		b1.className = "bloque2";
+		b2.className = "bloque1";
+	}else{
+		b1.className = "bloque1";
+		b2.className = "bloque2";
+	}
+		
+}
+</script>
+</head>
+<body>
+<!-- Vamos a crear un párrafo div, es como una capa de photoshop-->
+<div id="b1" class="bloque1"">
+	<img src="imagenes/abde.jpg" height="150" style="margin:20px">
+	<p align="justify" style="margin:20px">
+		<!--Añado la propiedad margen al parrafo p y a la imagen para que el texto no se ponga-->Una vez finalizado el mes de septiembre, marcado por la Vuelta y el Mundial en tierras australianas, llega el mes de octubre y con él, el Tour de Lombardía. La intensidad deportiva en el mundo ciclista, con las dos grandes vueltas en verano, sumado a la cita mundialista, han cargado de muchos kilómetros las piernas de los corredores de cara al otoño. Ahora, esta primera semana de octubre se presentan por delante varias carreras que estarán llenas de emoción y gran nivel.
+
+</p></div>
+<div id="b2" class="bloque2">
+	<img src="imagenes/vinegar.jpg" height="150" style="margin:20px">
+	<p align="justify" style="margin:20px">
+		Gran Piemonte (6 de octubre) La carrera italiana en la que se recorrerán 198km en un circuito que lleva desde la ciudad de Omegna hasta Beinasco se disputa este 6 de octubre. Algunos ciclistas como Quinten Hermans o Giacomo Nizzolo intentarán tomar el relevo de Matthew Walls, ganador de la edición de 2021.
+</p></div>
+<input type="button" value="Intercambio y className del b2" onclick="intercambio()"><!--como no tiene posición, se pone arriba porque los otros dos tienen posicion-->
+	
+</body>
+</html>

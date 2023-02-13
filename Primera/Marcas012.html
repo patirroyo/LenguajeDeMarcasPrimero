@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Movimiento</title>
+<style type="text/css"> 
+#cruz{position: absolute; top:200;}
+</style><!--Al objeto llamado cruz, le pongo la posición absoluta-->
+<script language="JavaScript">
+var n = 110;
+function mover(){
+	//alert(cruz.style.left);//así nos informa de la propiedad left
+	cruz.style.left = n;
+	n += 10;
+}
+</script>
+</head>
+<body onload="setInterval('mover()',200)"> <!--lo que ponemos en onload es javascript por defecto setInterval: (String con instruccion/es en javascript puesto con comillas simples para definir el string, si ponemos las dosbles "ciera" el setInterval; numero entero en ms que tarda el programa en llamar a la funcion)
+Hay una funcion setTimeOut que hace lo mismo pero solo una vez-->
+<div id="cruz" style="left:100"><img src="imagenes/cruz.png" height="100"></div><!--Uso la propiedad id, en lugar de name, porque name es para usarla fuera de la página, para usarla dentro se usa id.
+También tengo que definir los valores del objeto aquí, no en el estilo porque sino no puedo jugar con ello en javascript-->
+<!--<input type="button" value="Desplaza!" onclick="mover()"-->
+
+</body>
+</html>

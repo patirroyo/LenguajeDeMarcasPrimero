@@ -1,0 +1,25 @@
+<html>
+<head><title>Animación II</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+    $(document).ready(function(){
+        $("button").click(function(event){//para acceder a la marca lo hacemos con su nombre entre comillas, sin mas
+            //alert("aibaiba")
+            $("div").animate({left:'300px'}, "slow");//cambiamos la posición en el eje de las x, propiedad 'left'
+            $("div").animate({fontSize:'10em'}, 10000);//cambiamos el tamaño de la letra
+        });
+    });
+
+
+</script>
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+    <button>Iniciar Animación</button>
+    <div style="background:#98bf21; height:100px; width:10px; position:absolute">Jesús e Ismael son tontitos</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <head><title>Estilos y persiana</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        <script>
+            $(document).ready(function(event){//vamos a aplicar estilos css a través de js y con una función de jquery css
+                $("#caja").css({
+                                width:"200px",
+                                height:"15px",
+                                backgroundColor:"yellow",
+                                borderStyle:"solid",
+                                borderWidth:"3px",
+                                fontFamily:"Verdana",
+                                padding:"20px",
+                                fontSize:"12px",
+                                testAlign:"center",
+                                color:"blue"
+                });
+                $("#boton").click(function(){
+                    $("#caja").slideUp(3000, function(){//cuando se acaba la función se ejecuta la otra, SUELE CAER EN EL EXAMEN
+                        $("#caja").slideDown(3000);
+                    });
+                });
+            });
+        </script> 
+    </head>
+        <body>   
+            <input type="button" id="boton" value="Empezar">
+            <div id="caja">Bienvenidos al aula de 1H</div>
+
+        </body>
+</html>

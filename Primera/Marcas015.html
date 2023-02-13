@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Página de los números</title> 
+<style type="text/css">
+div{position: absolute}
+a{font-family: sans-serif; font-weight: bold; text-decoration: none; font-size: 62;}
+#cero{color:red}
+#uno{color:lime}
+#dos{color:blue}
+#tres{color:red}
+#cuatro{color:magenta}
+#cinco{color:blue}
+#seis{color:blue}
+#siete{color:magenta}
+#ocho{color:lime}
+#nueve{color:red}
+h3{color:red; font-family: sans-serif; text-align: center; margin-top: 5;margin-bottom: 5;}
+p{margin-left: 10; margin-right: 10; text-align: justify; font-size: 12pt; font-family: arial; font-weight: bold;}
+.pregunta{position: absolute; left: 150; top:80; width: 300; height: 200; border-width: 6; border-style: groove; border-color: lime; margin-top: 10;}
+</style><!--con el # le doy la propiedad a un objeto por su id; text-decoration es para quitar el subrayado del enlace. para definir una clase la llamo por .// un objeto con # y un tag sin nada
+-->
+<script language="JavaScript">
+    var actual = 1;
+    var respuestas = [7, 8, 2, 0];
+    var aciertos = [0, 0, 0, 0];
+    function pasar(){
+        //alert(event.key == 's' || 'S'); //atributo del objeto "event" que es la techa que se ha pulsado || or && and
+        if(actual < 6 && ((event.key == 's')||(event.key == 'S'))){//Esta ha sido mi manera
+            document.getElementById("pagina"+actual).style.visibility = "hidden";
+            document.getElementById("pagina"+(actual+1)).style.visibility = "visible";
+            actual++;
+        }
+        if(actual > 1 && (event.key == 'a')||actual > 1 && (event.key == 'A')){//esta ha sido la manera de Agustín
+            document.getElementById("pagina"+actual).style.visibility = "hidden";
+            actual--;
+            document.getElementById("pagina"+actual).style.visibility = "visible";
+            
+        }
+        //document.getElementById("pagina"+actual).style.visibility="hidden";//getElementById es un metodo que devuelve el objeto cuyo nombre es el que le pasas.
+   }
+   function cotejar(numero){//va a recibir una variable que se llamará numero
+        if(actual>= 3)
+            if(numero == respuestas[actual-3]){
+               // alert("Has acertado!");
+                aciertos[actual-3]= 1;
+                i = 0;
+                while((i < aciertos.length) && (aciertos[i] == 1))
+                    i++;
+                if(i == 4)
+                //if(aciertos[0] == 1 && aciertos[1] == 1 && aciertos[2] == 1 && aciertos[3] == 1) solo funciona de esta manera porque si comparamos un vector con otro, aunque el contenido sea el mismo no están en la misma dirección de memoria.
+                    alert("Has ganado!");
+            }
+            else
+                alert("Has fallado!");
+        
+
+   }
+
+</script>
+</head>
+<body onkeypress="pasar()"> <!--para cualquier evento de teclado-->
+    <div style="left: 200; top:0">
+        <a href=""id="cero" onclick="cotejar(0); return false">0</a><!--pongo el a sin href para que sea un enlace, pero de momento no lleva a ningún sitio. el return false es para anular el href-->
+    </div>
+    <div style="left: 10; top:75">
+        <a href=""id="uno" onclick="cotejar(1); return false">1</a>
+    </div>
+    <div style="left: 480; top:100">
+        <a href=""id="dos" onclick="cotejar(2); return false">2</a>
+    </div>
+    <div style="left: 100; top:125">
+        <a href=""id="tres" onclick="cotejar(3); return false">3</a>
+    </div>
+    <div style="left: 550; top:150">
+        <a href=""id="cuatro" onclick="cotejar(4); return false">4</a>
+    </div>
+    <div style="left: 10; top:175">
+        <a href=""id="cinco" onclick="cotejar(5); return false">5</a>
+    </div>
+    <div style="left: 475; top:200">
+        <a href=""id="seis" onclick="cotejar(6); return false">6</a>
+    </div>
+    <div style="left: 100; top:225">
+        <a href=""id="siete" onclick="cotejar(7); return false">7</a>
+    </div>
+    <div style="left: 25; top:250">
+        <a href=""id="ocho" onclick="cotejar(8); return false">8</a>
+    </div>
+    <div style="left: 500; top:275">
+        <a href=""id="nueve" onclick="cotejar(9); return false">9</a>
+    </div>
+    <div id="pagina1" class="pregunta"><!--Defino una clase, la clase pregunta-->
+        <h3>¡Bienvenido a la Página de los números!</h3>
+        <p>Para cambiar de página, pulsa la techa "s/S" para pasar a la siguiente pregunta y la tecla "a/A" para retroceder.</p>
+    </div>
+    <div id="pagina2" class="pregunta" style="visibility: hidden"><!--No se muestra pero ocupa el espacio-->
+        <p>Para entrar en la página de los números, tendrás que averiguar la combinación de acceso</p>
+        <p>Se formularán 4 preguntas. Para hallar la combinación de acceso, haz click sobre el número que responda a cada pregunta. Cuando tengas las cuatro, habrás encontrado la <strong>clave</strong> de entrada.</p>
+    </div>
+    <div id="pagina3" class="pregunta"style="visibility: hidden">
+        <p>Tengo 18 años, réstale 3, después suma 6 y por último divide por 3. ¿Qué cifra sale?</p>
+    </div>
+    <div id="pagina4" class="pregunta"style="visibility: hidden">
+        <p>Si cortas una manzana por la mitad, después cortas cada mitad de nuevo en dos y cada una de estas mitades de nuevo en dos, ¿Cuántos trozos de manzana tendrías?</p>
+    </div>
+    <div id="pagina5" class="pregunta"style="visibility: hidden">
+        <p>Igual que 16 es a hexadecimal y 8 a octal, éste número es a binario</p>
+    </div>
+    <div id="pagina6" class="pregunta"style="visibility: hidden">
+        <p>Multiplícame o divídeme, pero siempre sere yo, ¿Qué número soy?</p>
+    </div>
+                        
+
+
+
+</body>
+</html>

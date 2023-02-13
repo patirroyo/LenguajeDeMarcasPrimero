@@ -1,0 +1,40 @@
+<!--En este ejercicio creáis un input para que el usuario pueda introducir el número
+de su DNI. Al lado metéis un botón y al hacer click sobre él, aparecerá a la
+derecha y de manera bien visible, la letra del NIF correspondiente a dicho DNI.
+La letra se calcula dividiendo el número del NIF entre 23. El resto de la división
+nos dará la posición en la que se encuentra la letra dentro del vector que
+cargaréis con los siguientes valores:-->
+<html>
+
+<head>
+    <title>Calculadora</title>
+        
+
+    <script language="JavaScript">
+       letra = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
+       function calcular(){
+            resultado.innerHTML = letra[parseInt(primero.value)%23]; 
+
+        }
+    
+        
+       
+    </script>
+</head>
+
+
+<body>
+    <center>
+        <h1>Calculadora letra DNI</h1>
+<table align="center" border ="1">
+    <tr>
+        <td><input type="text" id="primero"></td>
+       
+
+        
+        <td> <input type="button" value="Calcular Letra" onclick="calcular()"></td>
+        <td id="resultado" width =100></td>
+    </tr>
+</table>
+</body>
+</html>

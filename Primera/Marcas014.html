@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Moviendo OBJETOS</title> 
+<style type="text/css">
+#circulo{position: absolute; left:100; top:200}
+#cruz{position: absolute; left:500; top:400}
+</style><!--si no tienen propiedad de posicionamiento no se podrán mover.-->
+<script language="JavaScript">
+    objeto = null;// declarar el objeto y dejarlo vacío
+    ejez = 2; //valor inicial de z para todos 1 por defecto
+    function cargar(){
+        if(event.srcElement.tagName == "IMG"){
+        objeto = event.srcElement; //declaro la variable objeto y la lleno con todo el objeto, no con el id
+        //alert(objeto.id);//event: para saber cual es la acción de usuario
+        //event.srcElement: para saber sobre el elemento que se ha producido el evento
+        //id:para saber el id del elemento sobre el que ha actuado el evento.
+        objeto.style.zIndex = ejez;//lo pongo por delante zIndex es la propiedad de posición en el eje de la Z: profundidad
+        ejez++;//para que siga poniendose siempre encima
+        }
+    }
+    function mover(){
+        if(objeto != null){
+        objeto.style.left = event.x-70;//posición del evento en el eje x: donde se ha movido el raton
+        objeto.style.top = event.y-50;//lo mismo con la y. el 50 y el 70 es para centrarlo
+    }
+    }
+    function soltar(){
+        objeto = null;
+    }
+
+</script>
+</head>
+<body id="tontolaba" onmousedown="cargar()" onmousemove="mover(); event.returnValue=false" onmouseup="soltar()"> <!--onclick es hacer click con el botón izqierdo, otro evento es onmouseDown cuando pulsas el click izquierdo y luego está el onmouseUp que es cuando sueltas el dedo; eso con el onclick no se puede diferenciar
+onmousemove: cuando mueves el raton
+event.rerunValue=false es para que no se repita la función de forma infinita-->
+<img id="cruz" src="imagenes/cruz.png" height="100">
+<img id="circulo" src="imagenes/circulo.png" height="100">
+</body>
+</html>

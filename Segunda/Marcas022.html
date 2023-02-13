@@ -1,0 +1,57 @@
+<html>
+    <head><title>Carrusel II</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        
+        <script>
+            $(document).ready(function(event){
+                $("#galeria div:gt(0)").hide(); //accedemos al objeto div de galeria, los : son directivas, funciones pequeñas. la :gt dice que se aplique la función hide a todos menos al 0 (al primero)
+                setInterval(function(){//función de jQuery, primer parámetro {} instrucciones y segundo los ms que transcurren desde que se ha producido para que se repita.
+                $("#galeria div:first").appendTo("#galeria"),
+                $("#galeria div:gt(0)").hide(),
+                $("#galeria div:first").show()
+                
+                },2000);
+                alert("funciona")
+            });
+        </script> 
+        <style type="text/css">
+            #galeria{
+                    position: relative;
+                    width: 600;
+                    height: 400;
+                    overflow: hidden;
+                    border: 10px solid #333;
+                    margin:0 auto;
+                    padding:0;
+                    border-radius: 40px;
+
+            }
+            #galeria p{
+                    position: absolute;
+                    left: 100; /*Como está dentro, es 100 de la galería, no de la página*/
+                    bottom: 30;
+                    color: #eee;
+                    background: #990000;
+                    text-align: center;
+                    width: 400;
+                    height: 24px;
+                    padding: 5px;
+                    display: block;
+                    line-height: 22px;
+                    font-size: 22px;
+                    opacity: 0.7;
+                    border-radius: 40px;
+            }
+        </style>
+
+
+
+    </head>
+        <body>   
+            <div id="galeria"> 
+                <div><img width="600" src="imagenes/1.jpg"><p>Imagen 1</p></div>
+                <div><img width="600" src="imagenes/2.jpg"><p>Imagen 2</p></div>
+                <div><img width="600" src="imagenes/3.jpg"><p>Imagen 3</p></div>
+            </div>
+        </body>
+</html>

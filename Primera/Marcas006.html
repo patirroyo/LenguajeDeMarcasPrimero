@@ -1,0 +1,74 @@
+<!-- Vamos a trabajar con formularios 
+Un formulario es una zona de una pagina web donde hay imputs-
+Es un lugar donde el usuario puede interactruar con la web.
+Todos los inputs están agrupados y luego se pulsa un botón que manda los datos a otro lugar.
+
+La marca de un formulario es la marca <form></form>
+
+Los formularios se utilizan para programar
+
+la propiedad method (metodo de paso de parámetros)
+	-get: manda el contenido a traves de la dirección www.pagina.html?x=23
+	-post: más seguro
+	
+	action: es el lugar al que envías el contenido del formulario: un programa en un lenguaje de programación
+-->
+<html>
+<head><title>Trabajando con formularios</title></head>
+<body>
+<h1 align="center">FORMULARIO</h1>
+<form method="post" action="programa.php">
+<table align="center" border="1" cellspacing="5">
+<tr>
+	<td align="right">Introduce tu nombre : </td>
+	<td><input type="text" size="50" maxlength="20" id="nombre" name="nombre"></td>
+<!-- por defecto el type del input es text
+	maxlength: longitud máxima en número de caracteres
+	id: identificador de manera única de manera local, en la página web
+	name: identificado de manera única para su utilización cuando se recoge tras la propiedad "action" en el programa. -->
+</tr>
+<tr>
+	<td align="right">Provincia : </td>
+	<td><select name="provincia">
+	<!-- voy a meter un objeto dentro de la marca select de la clase option (son los únicos que entran -->
+			<option value="22">Huesca</option>
+			<!-- tiene dos propiedades:
+				- value: valor que no se ve, lo que se va a guardar al elegir la opción que se ve.
+				- text: lo que se ve (también se puede poner con la propiedad o en el medio de las marcas
+				
+				cada uno de los option es un "List Item"
+				
+				-->
+			<option value="44">Teruel</option>
+			<option value="50" selected><!-- este item saldrá por defecto-->Zaragoza</option>
+		</select></td>
+</tr>
+<tr>
+	<td align="right">Edad :</td>
+	<td>Mayor de 60<input type="radio" name="edad" value="1"> <!--input tipo radio, si todos los input están así solo nos permite seleccionar uno, los otros se deseleccionan-->
+		Entre 30 y 60<input type="radio" name="edad" value="2">
+		Menor de 30<input type="radio" name="edad" value="3"></td>
+		<!-- si todos tienen el mismo "name" solo nos permite seleccionar uno, pero si lo hacemos mal, nos dejará seleccionar todos-->
+</tr>
+<tr>
+	<td align="right">Deportes :</td>
+	<td>Balonmano<input type="checkbox" name="deportes" value="1">
+		Baloncesto<input type="checkbox" name="deportes" value="2">
+		Fútbol<input type="checkbox" name="deportes" value="3"></td>
+</tr>
+<tr>
+	<td align="right">Comentario : </td>
+	<td><textarea name="comentario" cols="40" rows="4">Escribe un comentario...</textarea></td>
+	<!-- textarea es un campo para texto en el que decimos cuantas columnas (caracteres) y cuantas filas-->
+</tr>
+<tr>
+	<td><input type="reset" value="Limpiar"></td>
+	<!-- este boton hace un reset y limpia todo el formulario-->
+	<td><input type="submit" value="Enviar"></td>
+
+</tr>
+
+</table>
+</form>
+</body>
+</html>

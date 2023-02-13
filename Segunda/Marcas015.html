@@ -1,0 +1,34 @@
+<html>
+<head><title>Tratar con el evento MouseDown</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">    
+    $(document).ready(function(){
+        $("#escribe").keydown(function(event){
+                $("#escribe").val("");
+                    $("#parrafo").text("El código de la tecla " + String.fromCharCode(event.which) + " es " + event.which);//which el codigo de la tecla que has pulsado
+        });
+        $("#escribe").keyup(function(event){
+                $("#parrafo").text("Acabas de soltar la tecla");
+        });
+    });
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+    <p>
+        <input type="text" id="escribe">
+    </p>
+    <p id="parrafo">
+        Manten pulsada una tecla y después suéltala.
+    </p>
+
+    <!--Cuando pulsamos el boton izquierdo, se produce un evento click y muchos MouseDown (hasta que se levante el dedo)
+    Lo mismo sucede cuando pulsamos una tecla.-->
+    
+
+
+</body>
+</html>

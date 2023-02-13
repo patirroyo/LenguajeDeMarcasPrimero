@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Al hacer click</title>
+        
+
+
+
+
+    <script language="JavaScript">
+      var cont = 0;
+      var n = 0;
+      function cambiar(){
+        if(cont%2 != 0)
+          imagen.src = "imagenes/imagen2.jpg";
+        else
+          imagen.src = "imagenes/imagen3.jpg";
+          cont++;
+      }
+      function cambiar2(){
+        if(n == 0)
+          imagen.src = "imagenes/imagen1.jpg";
+        else
+          imagen.src = "imagenes/imagen2.jpg";
+        n = (n+1)%2;
+      }
+       
+    </script>
+</head>
+
+<body>
+    <h1 align ="center">Eventos onclick en button</h1>
+    <img id="imagen" src="imagenes/imagen2.jpg" width="150" height="150">
+    
+    <p></p>
+    <input type="button" value="Cambiar" onclick="cambiar()">
+    <!--cuando hago click llamará a la función cambiar-->
+    <button onclick="cambiar2()">Cambiar</button>
+    <!--Otra manera de ponerlo y hacerlo con cambiar2-->
+
+
+
+</body>
+</html

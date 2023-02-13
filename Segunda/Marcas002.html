@@ -1,0 +1,27 @@
+<html>
+<head><title>Mostrando posicionamento del ratón</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+$(document).ready(function(){
+        $("#texto").text("Buenos días Caballeros!!!");//text = inner.text
+        $("#texto2").html("<input type=button value=Hola>"); //html = innerHTML
+        $(document).mousemove(function(event){ //mousemove = onmousemove
+            $("#texto3").text(event.clientX + " - " + event.clientY);
+        });
+        $(document).mousemove(function(event){
+            $("#texto4").text(event.pageX + " - " + event.pageY);
+        }); //no está muy claro la diferencia entre pageX y clientX
+});
+
+
+
+</script>
+</head>
+<body>
+<div id="texto"></div>
+<div id="texto2"></div>
+<div id="texto3"></div>
+<div id="texto4"></div>
+
+</body>
+</html>

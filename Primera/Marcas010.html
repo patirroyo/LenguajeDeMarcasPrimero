@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Tres en raya (fase 2)</title>
+<style type="text/css"> 
+.val{width:30; height:35; background-color:yellow; text-align: center;} 
+.noval{width:30; height:35; background-color:lime; text-align: center;}
+
+</style>
+<script language="JavaScript">
+var n = 0; //declaro aquí una variable que hará de contador de clicks, se ejecuta cuando cargo la pagina, uso var y me sirve para objetos y tipos de datos
+function cambiar(){/*al objeto sobre el que se ha producido el objeto le meto el "Hola" el objeto tiene que tener marca de apertura y de cierre la funcion innerHTML o innerText mete lo que sea entre las marcas del body
+Solo admiten valores del tipo string */
+	objeto = event.srcElement;
+	if(objeto.className == "val"){
+		if (n == 0)
+			objeto.innerHTML = "<img src=imagenes/cruz.png width=30 height=35>";		
+		else
+			objeto.innerHTML = "<img src=imagenes/circulo.png width=30 height=35>";
+		n = (n + 1)%2;
+	}
+}
+</script>
+</head>
+<body onclick="cambiar()">
+<h1 align="center">Juego de las tres en Raya</h1>
+<table align="center" border="5" cellspacing="5">
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	
+</body>
+</html>

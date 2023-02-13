@@ -1,0 +1,31 @@
+<html>
+<head><title>Animación de fondo</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+$(document).ready(function(){//esta función se ejecuta al cargar la página
+    $("#mover1").click(function(){//"# accedemos al elemento a través de id" en este caso no ponemos event dentro de los paréntesis porque no nos va a servir para nada
+        $("body").animate({backgroundPositionX: "5000px"}, 10000);//Accedo a la única marca body, porque no hay ni puede haber más, por lo que no hace falta la propiedad id. Por lo que se accede a través del nombre.
+        // { } significa que le vamos a pasar un vector con todo lo que le queramos cambiar separados por comas.
+        //{backgroundPositionX: '5000px'} es una propiedad de estilo, el valor de la posición de la posición de se desplaza a 5000px.
+        //animate({vector con los valores finales}, entero con los ms que va a durar, "modos", function(){lo que hace al acabar} )
+        
+    });
+    $("#mover2").click(function(){
+        $("body").animate({backgroundPositionX: "0px"}, 1000);
+    });
+    $("#mover3").click(function(){
+        $("body").animate({backgroundPositionX: "+=100px"}, 1000, "linear", function(){alert("Se acabó lo que se daba")});
+    });
+        
+});
+
+
+
+</script>
+</head>
+<body background="imagenes/fondo4.jpg">
+<input type="button" id="mover1" value="Desplazar a la derecha">
+<input type="button" id="mover2" value="Desplazar a la izquierda">
+<input type="button" id="mover3" value="Desplazar a la derecha con mensaje">
+</body>
+</html>

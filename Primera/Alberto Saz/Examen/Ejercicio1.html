@@ -1,0 +1,48 @@
+<!--Crear una tabla, que en su primera fila sólo tenga una celda y en la segunda
+tenga 4. En cada una de esas 4 celdas de la segunda fila, habrá una imagen.
+Cuando el usuario haga click en una de las imágenes, ésta aparecerá en la celda
+de la primera fila. 2,5 puntos.-->
+
+<html>
+<head><title>ejercicio1</title>
+    <script language="JavaScript">
+        var objeto = null;
+        function cambiar(){
+            objeto = event.srcElement;
+            //alert(objeto.className)
+            if(objeto.className == "imagen")
+           vacio.innerHTML = "<img src=imagenes/" + objeto.id + ".jpg>";
+        }
+        
+      </script>
+
+</head>
+
+<body onclick="cambiar()">
+<h1 align="center">Ejercicio1</h1>
+
+<table border="10" align="center" bgcolor="lime" width="70%" cellpadding="100" cellspacing="20"> 
+		<tr>
+				<td id="vacio" colspan="4" align="center"></td>
+		</tr>
+        <tr> 
+				<td class="imagen" id="imagen1" background="imagenes/imagen1.jpg"; heigth=></td>></td>
+				<td class="imagen" id="imagen2" background="imagenes/imagen2.jpg"></td>></td>
+				<td class="imagen" id="imagen3" background="imagenes/imagen3.jpg"></td>></td>
+                <td class="imagen" id="imagen4" background="imagenes/imagen4.jpg"></td>></td>
+		</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

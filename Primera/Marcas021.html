@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Reloj digital</title>
+        
+
+    <script language="JavaScript">//no meto función, esto se ejecutará nada mas empezar
+        function reloj(){
+            var fecha = new Date();
+            var horaStr="";
+            horaStr = ((fecha.getHours()<10)? "0" : "") + fecha.getHours() + ":" + ((fecha.getMinutes()<10)? "0" : "") + fecha.getMinutes() + ":" + ((fecha.getSeconds()<10)? "0" : "") + fecha.getSeconds() + ":" + ((fecha.getMilliseconds()<100)? "0" : "") + fecha.getMilliseconds();//if inmediato, si es cierto se ejecuta, si no se ejecuta lo siguiente a los dos puntos. si la hora es menor de las 10 se pondrá un 0 antes
+            
+            cadena.value = horaStr;
+        }
+    
+       
+    </script>
+</head>
+
+
+<body onload="setInterval('reloj()',50)">
+    <center>
+        <h1>Reloj digital</h1>
+        <input id="cadena" size=8>
+</body>
+</html>

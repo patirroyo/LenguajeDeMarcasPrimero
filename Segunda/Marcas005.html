@@ -1,0 +1,29 @@
+<html>
+<head><title>Eventos de ratón</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">//nada más cargar la página, se ejecutan las instruciones
+    x = $(document);//un objeto es una variable de tipo puntero, que apunta a la RAM, en su interior hay una dirección de memoria. $(document) es un objeto que está en la RAM, en mi programa tengo una drección de memoria que se meterá a x, para el programa ambos son lo mismo. Puedo actuar con ambos porque es lo mismo.
+    x.ready(inicializaEventos); //cuando se abra la ventana, llamamos a la función inicializaEventos
+
+function inicializaEventos(){
+    var objetos = $("a"); //es un vector de objetos, de enlaces. Hay 3 obejtos. En javaScript no hay variables locales, por lo que se puede utilizar en otro método sin problema. No es tan restrictivo como Java.
+    objetos.mouseover(entrarMouse);//cuando me ponga sobre cualquiera de los objetos de la marca a, se produce sobre un solo elemento del vector y podremos hacer referencia a el con "this". De primeras solo se guarda en memoria y cuando se produzca el evento es cuando se ejecutará.
+    objetos.mouseout(salirMouse);
+}
+function entrarMouse(){
+    $(this).css("background-color", "#F00"); //se ha producido el evento sobre uno de los tres objetos, se ha producido sobre this. en jQuery hay una función llamada css, hay que pasarle una dupla clave, valor, es decir, que propiedad quieres modificar (String) y que valor le das.
+
+}
+function salirMouse(){
+    $(this).css("background-color", "");
+}
+
+
+</script>
+</head>
+<body>
+<a href="http://www.marca.es">Marca</a><br>
+<a href="http://www.heraldo.es">Heraldo de Aragón</a><br>  
+<a href="http://elpais.com">El País</a><br>    
+</body>
+</html>

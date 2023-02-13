@@ -1,0 +1,49 @@
+<html>
+    <head><title>Menú con listas</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        <link rel="stylesheet" href="Marcas020.css"type="text/css"><!--Le adjuntamos, linkamos un archivo de estilo, le aplicamos los estilos del archivo-->
+        <script>
+            $(document).ready(function(event){
+                $(".contenedor div").hide();
+                $(".contenedor div:first").show();
+                $("ul.tabs li:first").addClass("activa");
+                $("ul.tabs li").click(function(){//cuando ponemos ul.tabas se refiere a los objetos de una lista desordenada de la clase tabs y el li es que nos referimos a cualquier elemento li dentro de los ul.tabs
+                    $("ul.tabs li").removeClass("activa");
+                    $(this).addClass("activa");
+                    $(".contenedor div").hide();
+                    var parrafoAActivar = $(this).find("a").attr("href"); //Coge el href del a que está dentro del this
+                    $(parrafoAActivar).show();
+
+                });
+            });
+        </script> 
+    </head>
+        <body>   
+            <table align="center">
+                <tr><td>
+                    <ul class="tabs"> <!--la clase la definimos nosotros en estilos y los estilos que le aplicaremos a ella, se los aplicaremos a todos los elementos que contenga.
+                    Los items son los elementos de la lista-->
+                        <li><a href="#tab1">Menú 1</a></li>
+                        <li><a href="#tab2">Menú 2</a></li>
+                        <li><a href="#tab3">Menú 3</a></li>
+                        <li><a href="#tab4">Menú 4</a></li>
+                    </ul>
+                    <div class="contenedor">
+                        <div id="tab1">
+                            CONTENIDO 1
+                        </div>
+                        <div id="tab2">
+                            CONTENIDO 2
+                        </div>
+                        <div id="tab3">
+                            CONTENIDO 3
+                        </div>
+                        <div id="tab4">
+                            CONTENIDO 4
+                        </div>
+                    </div>
+                </td></tr>
+            </table>
+
+        </body>
+</html>

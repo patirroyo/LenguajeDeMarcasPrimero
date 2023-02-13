@@ -1,0 +1,57 @@
+<!--Crear un videojuego; un robin hood que se mueva en vertical con el raton
+lance flechas con el click
+y aplaste un globo si intersecta
+posición absoluta.-->
+<html>
+
+<head>
+    <title>Lanzando flechas</title>
+    <style type="text/css">
+       img{position: absolute;}
+       
+
+
+
+    </style>
+    <script language="JavaScript">
+       
+       function mover(){
+            robin.style.top = event.y-225;
+       }
+       function moverF(){
+            flecha.style.left = parseInt(flecha.style.left)+10;
+            moverG();
+       }
+       function disparar(){
+            flecha.style.left = 200;
+            flecha.style.top = event.y-140;
+            
+       
+    }
+       function moverG(){
+        if(!(((parseInt(flecha.style.left) + parseInt(flecha.width))< parseInt(globo.style.left))
+        || (parseInt(flecha.style.left) > (parseInt(globo.width) + parseInt(globo.style.left))) 
+        || (parseInt(flecha.style.top) > (parseInt(flecha.height) + parseInt(globo.style.top)))
+        || ((parseInt(flecha.height) + parseInt(flecha.style.top))< parseInt(globo.style.top))))
+
+            globo.src = "imagenes/bang.jpg"    
+        if(parseInt(globo.style.top) < -250){
+                 globo.style.top = 800;
+                 globo.src = "imagenes/globo.jpg"
+            }
+            else
+                globo.style.top = parseInt(globo.style.top)-5;
+                
+            
+       }
+       
+    
+    </script>
+</head>
+
+<body onload="setInterval('moverF()',50)" onmousemove="mover(); return false" onmousedown="disparar()">
+    <img id="robin" src="imagenes/robin.png" height="200" style="left: 50"><!--solo le doy posicion en el eje de las x, el de las y será con el ratón-->
+    <img id="globo" src="imagenes/globo.jpg" height="100" style="left: 800; top: 800">
+    <img id="flecha" src="imagenes/flecha.png" height="40" style="left: 300; top:-1000"> <!--Cuando damos el id, lo que hacemos es declarar una variable que luego nos puede servir para comparar con otra variable-->
+</body>
+</html>

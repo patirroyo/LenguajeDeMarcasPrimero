@@ -1,0 +1,72 @@
+<html>
+<head><title>Creando TABLAS</title></head>
+<body>
+<h1 align="center">TABLAS</h1>
+<!--una tabla se define a tres niveles:
+	la principal: <table>
+	las filas: <tr>
+	celda: <td>
+	
+	hay otras marcas tipo <th> que se utilizan para el encabezado
+	-->
+<table border="10" align="center" bgcolor="orange" width="70%" cellpadding="20" cellspacing="20"> 
+<!-- estoy creando una tabla: con borde gordote 10 y centrada, con color de fondo naranja y con un ancho del 70% de la ventana.
+Hay dos propiedades, espacio entre contenido de las celdas y sus bordes: cellpadding separación entre el contenido de las celdas y sus bordes (20 pixeles)
+
+Separación entre las celdas: cellspacing: el grosor de las lineas internas-->
+
+		<tr bgcolor="yellow" valign="top" height="200"> 
+		<!--con una fila. Si damos instrucciones, manda el nivel que sea más bajo, en este caso la fila amarilla.
+		Vamos a alinear las filas con alineación vertical: top, bottom, middle.-->
+				<td>Uno</td><!--con celdas-->
+				<td>Dos</td>
+				<td rowspan="2">Tres</td><!-- quiero expandir esta fila hasta abajo y que haya 5 celdas en lugar de 6, la expando y que ocupe 2 filas-->
+		</tr>
+		<tr><!--con otra una fila-->
+				<td colspan="2" background="imagenes/leon.jpg">Cuatro</td><!-- quiero expandir esta celda hacia la derecha, y que ocupe dos celdas, dos columnas; también quiero hacer poner imagen de fondo-->
+		</tr>
+		
+</table>
+<br>				
+<table border="10" align="center" bgcolor="orange" width="70%" cellpadding="20" cellspacing="20"> 
+		<tr bgcolor="yellow" valign="top"> 
+				<td>Uno</td>
+				<td>Dos</td>
+				<td rowspan="3">Tres</td>
+		</tr>
+		<tr>
+				<td colspan="2" background="imagenes/leon.jpg">Cuatro</td>
+		</tr>
+		<tr>
+				<td colspan="2" background="imagenes/leon.jpg">Cinco</td>
+		</tr>
+		
+</table>
+<br>
+<table border="10" align="center" bgcolor="orange" width="70%" cellpadding="20" cellspacing="20"> 
+		<tr bgcolor="yellow" valign="top"> 
+				<td>Uno</td>
+				<td>Dos</td>
+				<td>Tres</td>
+		</tr>
+		<tr>
+				<td colspan="3" background="imagenes/leon.jpg">Cuatro</td>
+		</tr>
+		<tr>
+				<td background="imagenes/leon.jpg">Cinco</td>
+				<td colspan="2" background="imagenes/leon.jpg">Sais</td>
+		</tr>
+		
+</table>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

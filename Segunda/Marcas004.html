@@ -1,0 +1,24 @@
+<html>
+<head><title>Otro ejemplo de animación</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+    $(document).ready(function(){
+        $("#ampliar").click(function(){
+        $("#capa0").animate({outlineWidth: "10px"});
+    });
+    $("#ampliar1").click(function(){
+        $("#capa0").animate({outlineWidth: "15px"},10000);
+    });
+});
+
+
+
+</script>
+</head>
+<body>
+    <span style="outline: 1px solid black" id="capa0">Capa en la que cambiamos la propiedad outline</span>
+    <br><br><br><br><br>
+    <input type="button" id="ampliar" value="Ampliar marco">
+    <input type="button" id="ampliar1" value="Ampliar marco 10s">
+</body>
+</html>

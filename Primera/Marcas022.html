@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Calculadora</title>
+        
+
+    <script language="JavaScript">
+        function operar(){
+            switch(operador.value){
+                case "+":
+                    resultado.innerHTML = parseInt(primero.value) + parseInt(segundo.value);
+                        break;
+                case "-":
+                    resultado.innerHTML = parseInt(primero.value) - parseInt(segundo.value);
+                        break;
+                case "*":
+                    resultado.innerHTML = parseInt(primero.value) * parseInt(segundo.value);
+                        break;
+                case "/":
+                    resultado.innerHTML = parseInt(primero.value) / parseInt(segundo.value);
+                        break;
+            }
+
+        }
+        
+       
+    </script>
+</head>
+
+
+<body>
+    <center>
+        <h1>Calculadora</h1>
+<table align="center" border ="1">
+    <tr>
+        <td><input type="text" id="primero"></td>
+        <td> <select id="operador" size="1">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select></td>
+
+        <td> <input type="text" id="segundo"></td>
+        <td> <input type="button" value="=" onclick="operar()"></td>
+        <td id="resultado" width =100></td>
+    </tr>
+</table>
+</body>
+</html>

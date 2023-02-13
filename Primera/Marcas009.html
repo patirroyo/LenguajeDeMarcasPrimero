@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Tres en raya (fase 1)</title>
+<style type="text/css"> 
+.val{width:30; height:35; background-color:yellow} 
+.noval{width:30; height:35; background-color:lime}
+
+</style>
+<!-- Creo una clase, la clase val, las defino con . y se aplican con class;
+	puedo crear muchas clases -->
+
+<script language="JavaScript">
+/*Si hago click en un punto y es de la clase val que pase a la clase noval
+A las funciones se le ponen nombres con minusculas*/
+function cambiar(){
+	objeto = event.srcElement; //elemento sobre el que se ha producido el evento
+	if(objeto.className =="val")
+		objeto.className = "noval";
+	/*event sin comillas para que se genere un objeto de la clase event
+	Tiene una serie de parámetros que lo definen: el tipo de evento
+	sobre quién se ha producido el evento y más.
+	event.srcElement nos dice sobre QUIÉN se ha producido
+	*/
+}
+</script>
+</head>
+<body onclick="cambiar()">
+<h1 align="center">Juego de las tres en Raya</h1>
+<table align="center" border="5" cellspacing="5">
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	<tr>
+		<td class="val"></td><td class="val"></td><td class="val"></td>
+	</tr>
+	
+</body>
+</html>

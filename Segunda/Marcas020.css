@@ -1,0 +1,49 @@
+ul.tabs{/*aplicado sobre los objetos ul de la clase tabs*/
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 32px;
+    width: 600px;
+    margin-top: -7;
+}
+ul.tabs li{/* aplicale lo que sea a los items li que estén dentro de los objetos ul de la clase tabs*/
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #333;
+    margin-bottom: -1;
+    background: #333;
+    overflow: hidden; /*si hay sobrecarga, es decir si quiero meter algo más grande que el espacio que tengo, lo escondo*/
+    position: relative;
+    border-radius: 7px 7px 0px 0px;
+}
+ul.tabs li a{/* sobre las marcas a de los li items de la lista desordenada*/
+    color: #FFF;
+    text-decoration: none; /*quita el subrayado*/
+    font-size: 13px;
+    display: block;
+    padding: 0 20px;/*separación entre el contenido y los bordes, solo en horizontal, nada en vertical.*/
+}
+ul.tabs li a:hover{/*cuando me ponga con el raton sobre la marca a*/
+    background: #666;
+}
+.contenedor{
+            float: left;
+            clear: both;
+            width: 600px;
+            height: 500px;
+            display: block;
+            border: 1px solid #333;
+            border-radius: 0px 7px 7px 7px;
+            background: linear-gradient(#FFFFFF, #CCCCCC);
+}
+li.activa a{/*Un objeto a dentro un list de la clase activa. Si un objeto "a" dentro de una lista de la clase "activa". Aqui he creado una definición pues ningún objeto tiene la calse activa todavia*/
+            color: #333;
+            font-weight: bold;
+            background: #CCCCCC;
+            border-bottom: 1px solid #CCC;
+
+}

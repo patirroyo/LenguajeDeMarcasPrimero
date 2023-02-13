@@ -1,0 +1,72 @@
+<html><!--Incorporamos a esta página web todas las funciones que tiene jquery.
+    Ahora nos tenemos que empapar de las funciones que tiene el framework y aprender
+    a usarlas-->
+<head><title>Métodos SLIDE</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+$(document).ready(function(){
+/* El equivalente al onload
+Cuando trabajamos con objetos los llamamos con el $, dentro de los objetos hay 
+otros objetos, dentro del objeto bolsillo hay un usb y una llave; dentro de un 
+objeto hay otros objetos.
+El objeto document está dentro de la ventana, lo más grande. para acceder a un 
+objeto que tenemos claro $(objeto): $(document) o $(window) o $(div).
+Como tenemos un párrafo que se llama rectangulo, accedemos a él a traves de su nombre.
+$("#rectangulo")
+Si nos referimos a un objeto que existe nos referimos a el con $(nombre): $(div)
+si nos referimos a un objeto que hemos creado con $("#"): $("#rectangulo")
+si nos referimos a una clase $(".#nomClase").
+
+A un conjunto de instrucciones se le denomina macrofunción.
+Estamos diciendo que al cargar (ready), cuando ocurre el EVENTO, la página se ejecutan las funciones que vienen a continuación que vienen dentro del function.
+*/
+    $("#deslizar").click(function(event){
+        //cuando hacemos click en el objeto deslizar, se ejecuta la funcion
+        //en este caso se registra el evento, pero no es necesario
+        $("#rectangulo").slideUp(4000);
+        //accediendo al objeto rectángulo le aplicamos una función de jquery
+    });
+    $("#deslizar2").click(function(){
+        //cuando hacemos click en el objeto deslizar2, se ejecuta la funcion
+        //en este caso no se registra el evento, porque no es necesario
+        $("#rectangulo").slideDown(1000);
+        //accediendo al objeto rectángulo le aplicamos una función de jquery
+    });
+    $("#lento").click(function(){
+        $("#rectangulo").slideUp("slow");
+        //funciones slide son polimorfas,  por lo que podemos darles numeros o strings.
+    });
+    $("#rapido").click(function(){
+        $("#rectangulo").slideDown("fast");
+    });
+    $("#conmensaje").click(function(){
+        $("#rectangulo").slideUp(4000, function(){
+            alert("Efecto terminado!!!");
+            $("#rectangulo").slideDown(4000);
+        });
+    });
+    $("#Toggle").click(function(event){
+        $("#rectangulo").slideToggle(2000);
+    });
+
+
+
+
+
+});
+
+
+
+</script>
+</head>
+<body>
+<input type="button" id="deslizar" value="Ocultar en 4000 milisegundos">
+<input type="button" id="deslizar2" value="Mostrar en 1000 milisegundos">
+<input type="button" id="lento" value="Ocultar lento">
+<input type="button" id="rapido" value="Mostrar rápido">
+<input type="button" id="conmensaje" value="Mensaje final">
+<input type="button" id="Toggle" value="Efecto SlideToggle">
+
+<div id="rectangulo" style="padding:500px 30px 30px 300px; background-color: yellow"></div>
+</body>
+</html>

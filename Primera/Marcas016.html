@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Página de movimiento</title>
+    <style type="text/css">
+        #imagen1 {position: absolute; left: 150; top: 200;}
+        #imagen2 {position: absolute; left: 300; top: 50;}
+        #imagen3 {position: absolute; left: 450; top: 200;}
+        #imagen4 {position: absolute; left: 300; top: 350;}
+    </style>
+    <!--en la zona de estilos accedemos a un objeto con #; en este caso determinamos las posiciones iniciales de las imágenes-->
+    <script language="JavaScript">
+        var EjeX = new Array(4);//declaro el vector que determinará las posiciones en el eje de las X
+        var EjeY = new Array(4);//lo mismo con el el que determinará las posciones en el eje de las Y
+
+        EjeX[0] = new Array(150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300);//Cada vez va tomando posiciones a la derecha
+        EjeX[1] = new Array(300, 315, 330, 345, 360, 375, 390, 405, 420, 435, 450);
+        EjeX[2] = new Array(450, 435, 420, 405, 390, 375, 360, 345, 330, 315, 300);
+        EjeX[3] = new Array(300, 285, 270, 255, 240, 225, 210, 195, 180, 165, 150);
+
+
+        EjeY[0] = new Array(200, 185, 170, 155, 140, 125, 110, 95, 80, 65, 50);
+        EjeY[1] = new Array(50, 65, 80, 95, 110, 125, 140, 155, 170, 185, 200);
+        EjeY[2] = new Array(200, 215, 230, 245, 260, 275, 290, 305, 320, 335, 350);
+        EjeY[3] = new Array(350, 335, 320, 305, 290, 275, 260, 245, 230, 215, 200);
+
+
+        var posicion = 0;//determinará la posicion que toma cada imágen en cada intervalo, cuando llegue a 11 se reinica (hay 10 posiciones)
+        var orden = new Array(0, 1, 2, 3); //declaro un nuevo array ►bidimiensional(lo declaro unidimensional y luego pongo una función que va a ir desplazando las posiciones del vector) que me servirá para indicar en qué posición empieza cada cada imagen tras dar al botón de desplazar.
+        //orden[0] = new Array(0, 1, 2, 3);
+        // orden[1] = new Array(1, 2, 3, 0);
+        // orden[2] = new Array(2, 3, 0, 1);
+        // orden[3] = new Array(3, 0, 1, 2);
+        //var contador = 0;//declaro un contador que me servirá para indicar las veces que he dado al botón y ha terminado el bucle, cuando llegue a 4 se reiniciará porque las imágenes habrán vuelto a su posición inicial.
+        function rotar() {
+            //alert(posicion);
+            for (i = 0; i < EjeX.length; i++) {
+                //al hacer un bucle, muevo los atributos de left y top de las cuatro imágenes a la vez.
+                document.getElementById("imagen" + (i + 1)).style.left = EjeX[orden[i]][posicion];
+                //con esto "traigo" el elemento que se llama imagen + i (el +1 es porque las imágenes empiezan en 1, pero luego me interesa mantener el 0 para el vector de posición. 
+                
+                //En ejeX orden está definido por el array unidimensional que va variando cada vez que acaban los 10 movimientos.
+
+                        //En EjeX[orden[][]][] el primer orden está definido por el contador, así que cada vez que pulsemos a desplazar y termine los movimientos nos dejará lista la función para que los movimientos que se apliquen a la imagen correspondan con los que se espera de su orden y la i los correspondientes a cada imagen cada vez. Posición responde a los 10 pasos que da cada imagen cuando pulsamos el botón.
+                document.getElementById("imagen" + (i + 1)).style.top = EjeY[orden[i]][posicion];
+                /*//imagen1.style.left = EjeX[0][posicion]//En la zona de javascript llamamos a un objeto por su nombre nada más
+                //imagen1.style.top = EjeY[0][posicion]
+                //imagen2.style.left = EjeX[1][posicion]
+                //imagen2.style.top = EjeY[1][posicion]
+                //imagen3.style.left = EjeX[2][posicion]
+                //imagen3.style.top = EjeY[2][posicion]
+                //imagen4.style.left = EjeX[3][posicion]
+                //imagen4.style.top = EjeY[3][posicion]*/
+            }
+            posicion++; //cada vez que movemos una posición las cuatro imágenes, aumentamos posición para que pueda volver a moverlas.
+            if (posicion == 11) {//cuando hemos hecho los 10 movimientos, ya no tenemos más por lo que:
+                clearInterval(objeto);//esta funcion es para parar el intervalo que hemos llamado objeto
+                posicion = 0;//reiniciamos el contador de las posiciones
+                //contador++;//le decimos que las imámenes han aumentado un orden
+                var intercambio = orden[0];
+                for (j = 0; j < orden.length - 1; j++)//en vez de usar el array bidimensional uso el bucle que hace lo mismo con menos complicaciones
+                    orden[j] = orden[j + 1];
+                orden[orden.length-1] = intercambio;
+                
+            }
+            //if(contador==4)//cuando las imágenes han vuelto a su sitio volvemos a empezar
+            // contador=0;
+        }
+
+    </script>
+</head>
+
+<body>
+    <img id="imagen1" src="imagenes/imagen1.jpg" width="150" height="150">
+    <img id="imagen2" src="imagenes/imagen2.jpg" width="150" height="150">
+    <img id="imagen3" src="imagenes/imagen3.jpg" width="150" height="150">
+    <img id="imagen4" src="imagenes/imagen4.jpg" width="150" height="150">
+    <input type="button" value="Desplazar" onclick="objeto=setInterval('rotar()',100)">
+    <!--Creo un botón y llama a la función rotar cada 1000ms. La función setInterval tiene que recibir un string con comillas simples''.
+La función setInterval devuelve algo, un intervalo que puedo guardar en una variable y en un momento dado lo puedo parar. De momento no tiene mnombre, pero el objeto existe. Si le damos nombre podremos hacer referencia a él. lo llamamos "objeto"
+para parar el intervalo llamamos a la función clearInterval -->
+
+</body>
+
+</html>

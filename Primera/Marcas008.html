@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Trabajando con estilos</title>
+<style type="text/css"> 
+h1{margin-left:0.25in; color:navy; font-size:24pt}
+h2{margin-left:0.5in; color:red; font-size:18pt}
+p{margin-left:0.75in; margin-right:5.5in; color:blue; font-size:12pt}
+</style>
+<!--Estamos declarando una zona con un script, si no damos lenguaje es javascript, aquí vamos a poner instrucciones de java, no marcas. Vamos a poner funciones, precedidas por "function", luego como la llamamos, ojo es KeySensitive. despues unos paréntesis si le pasamos parámetro y sino vacio -->
+<!--Un evento es que pase una cosa, en programación es algo que pase en el programa: mover el ratón, hacer click, seleccionar algo... Cuando el usuario provoca una de estas situaciones, se genera un evento, el programa genera un objeto de la clase event; esos eventos están clasificados, es decir, hay eventos específicos para cada acción: hacer click, pulsar tecla... -->
+<script language="JavaScript">
+function ampliar(){
+    alert("Hola, has hecho click y entonces se mostrará u ocultará el parrafo2");  //muestra una ventana con el mensaje
+    if(parrafo2.style.display == "none")/*Parrafo2 es un objeto, lo llamo con el  . luego propiedad= display y "" para visible*/
+		parrafo2.style.display = ""
+	else
+		parrafo2.style.display = "none";
+}
+function extender(){
+	 alert("Hola, has hecho click y entonces se mostrará u ocultará el párrafo3");
+	if(parrafo3.style.display == "none")
+		parrafo3.style.display = ""
+	else
+		parrafo3.style.display = "none"
+}
+</script>
+</head>
+<body>
+<h1 onclick="ampliar()">Reemplazando HTML dinámicamente</h1><!-- Dentro de las marcas que no son keysensitive, se pueden poner eventos onclick y luego dentro de las comillas instrucciones en javascript: llamamos a la funcion ampliar-->
+<h2 id="parrafo2"style=display:none onclick="extender()">Esta es la segunda cabecera</h2>
+<p id="parrafo3" style=display:none><!-- desaparece-->
+Esto es lo que a a ver si se hace click sobre ambas cabeceras.
+Es similar en estilo al sofware de presentación, en que el contenido se muestra según las acciones del usuario.
+</body>
+</html>

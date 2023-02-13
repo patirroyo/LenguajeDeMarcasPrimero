@@ -1,0 +1,33 @@
+<html>
+<head><title>Animación con la opacidad</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+    $(document).ready(function(){
+        $("button").click(function(event){//para acceder a la marca lo hacemos con su nombre entre comillas, sin mas
+            //alert("aibaiba")
+            $("div").animate({height:'300px', opacity:'0.4'}, "slow");
+            $("div").animate({width:'300px', opacity:'0.8'}, "slow");
+            $("div").animate({height:'100px', opacity:'0.4'}, "slow");
+            $("div").animate({width:'10px', opacity:'1'}, "slow");
+        });
+
+
+    });
+
+
+</script>
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+    <button>Iniciar Animación</button>
+    <div style="background:#98bf21;
+                height:100px;
+                width:10px;
+                position:absolute">
+    </div>
+
+</body>
+</html>

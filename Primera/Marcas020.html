@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Página mutante</title>
+        
+
+
+
+
+    <script language="JavaScript">//no meto función, esto se ejecutará nada mes empezar
+        var fecha = new Date();//declaro fecha, se carga al empezar y es un objeto de la clase DATE, reservo memoria RAM, instancio. La clase DATE trabaja con fechas y horas. Se carga con la fecha y hora actuales. Tendremos diferentes atributos: dia, hora, minutos, dia juliano, año...
+        document.write("<body background=imagenes/fondo" + ((fecha.getSeconds()%4)+1)+".jpg");
+        //cuando tenemos una funcion que devuelve algo, empieza por get; en este caso los segundos.
+        //los segundos los dividimos entre 4 y nos quedamos con el resto +1 para conseguir un número para la imagen, así conseguimos un número "aleatorio" y cada vez que iniciemos la página nos abrirá un fondo diferente.
+
+    
+       
+    </script>
+</head>
+
+<!--<body onload="iniciar()">al cargar la página llamamos a la función inicial, hay que ponerlo en el body-->
+<body>
+
+
+</body>
+</html

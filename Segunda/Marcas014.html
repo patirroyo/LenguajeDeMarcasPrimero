@@ -1,0 +1,38 @@
+<html>
+<head><title>Añadir botones, método append</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+    var imagen = $("<img>", {src:"imagenes/papelera.png", //primero instanciamos un objeto, imagen.
+                            id:"imagen",
+                            css:{"padding":"2px",
+                                "cursor":"pointer",
+                                "height":"200px"},
+                            click:function(e){document.location="Marcas013.html";}//document.location es una redireccion, que se producirá al hacer click.
+                });//Son todo duplas clave:valor, es un vector de duplas de propiedades de las marcas; como se pueden modificar varias propiedades, tenemos un vector dentro de otro vector. 
+                //Se puede crear el objeto 
+    
+    
+    $(document).ready(function(){
+        $("#boton").click(function(){
+           // $(".prueba").append($(imagen));
+            $("body").append($(imagen))//si hubiermos querido modificar varios objetos, habriamos creado una clase y accederiamos a ella con .class así modificariamos todos los objetos de la clase.
+        });
+    });
+
+
+</script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+    <input type="button" id="boton" value="Incorporar objeto">
+    <div class="prueba"></div>
+    <div class="prueba"></div>
+    <div class="prueba"></div>
+
+    <p>Vamos a crear objetos pero no a mostrarlos</p>
+
+
+</body>
+</html>
