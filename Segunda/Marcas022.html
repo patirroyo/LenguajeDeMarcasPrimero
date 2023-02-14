@@ -6,12 +6,10 @@
             $(document).ready(function(event){
                 $("#galeria div:gt(0)").hide(); //accedemos al objeto div de galeria, los : son directivas, funciones pequeñas. la :gt dice que se aplique la función hide a todos menos al 0 (al primero)
                 setInterval(function(){//función de jQuery, primer parámetro {} instrucciones y segundo los ms que transcurren desde que se ha producido para que se repita.
-                $("#galeria div:first").appendTo("#galeria"),
-                $("#galeria div:gt(0)").hide(),
-                $("#galeria div:first").show()
-                
-                },2000);
-                alert("funciona")
+                $("#galeria div:first-child").fadeOut()//cogemos el hijo del primero, es decir, lo que hay dentro del div(la imagen y el párrafo p) y lo dejamos de mostrar
+                .next("div").fadeIn(1000)//mostramos el siguiente div
+                .end().appendTo("#galeria"); //el último div lo ponemos al principio de galeria
+                },4000);
             });
         </script> 
         <style type="text/css">

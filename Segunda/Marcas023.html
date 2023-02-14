@@ -1,0 +1,71 @@
+<html>
+    <head><title>Formulario con sus validaciones</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        
+        <script>
+            var validosNombre = "^[a-z A-Z]{4,30}$";//admite letras en minúsuclas de la a-z, espacios y letras mayúsculas de la A a la Z. Entre 3 y 30 repeticiones de eso.
+            var validosEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+
+            $(function(){//se ejecuta esta función una vez cuando se abre la página
+                checkForm("#contacto");//llama a la función checkForm y le pasa #contacto
+            });
+
+            function checkForm(idForm){
+                $(idForm + " *").on("change keyup", function(){//MUY IMPORTANTE EL ESPACIO para que se cree bien el String y llamar a lo que hay que llamar
+                //si mando #contacto con esto obtendré "#contacto*" de esta manera le estoy diciendo que coja todo el formulario entero
+                //aquí defino el evento, cuando suelte la tecla (sea la que sea).
+                    if(checkInput("#nombre", validosNombre) &&
+                        checkInput("#apellidos", validosNombre) &&
+                        checkInput("#email", validosEmail))
+                        $(idForm + " button.submit").removeAttr("disabled");//MUY IMPORTANTE EL ESPACIO
+                    else
+                        $(idForm + " button.submit").attr("disabled", "disabled");
+                });
+            }
+
+            function checkInput(idInput, validacion){//donde idInput pasaré '#nombre'
+                return $(idInput).val().match(validacion) ? true: false; //val devuelve el valor del objeto (que acabamos de nombrar bien con el $(idInput) y la comparamos (match) con un string que tenga un parámetro de validación; el true y el false nos lo podiamos haber ahorrado.
+            }
+        </script> 
+        <style type="text/css">
+            form{margin:1em}
+            label{display:block;margin:.5em 0}
+        </style>
+
+
+
+    </head>
+        <body>   
+            <form name="contacto" id="contacto" method="post" action="www.adadf"><!-- method es el método de pasar los datos
+            Cuando se pasan los parámetros a traves del método get
+            es cuando aparecen en la wev con ....? nombre = valor&... 
+        
+            En este caso va a mandar el contenido entero donde manda el action en el momento en el que se ejecuta el metodo "submit()" que en este caso lo haremos mediante un botón.-->
+                <label for="nombre">Nombre:</label>
+                <input name="nombre" id="nombre" size="30">
+                <label for="apellidos">Apellidos:</label>
+                <input name="apellidos" id="apellidos" size="30">
+                <label for="email">E-mail:</label>
+                <input name="email" id="email" size="30">
+                <label for="edad">Edad:</label>
+                <select name="edad" id="edad">
+                    <option></option>
+                    <option value="18-25">18 a 25 años</option>
+                    <option value="26-45">26 a 45 años</option>
+                    <option value="46-65">46 a 65 años</option>
+                    <option value="+65">más de 65 años</option>
+                </select>
+                <label for="comentario">Comentario:</label>
+                <textarea name="comentario" id="comentario" cols="40" rows="4"></textarea>
+                <label for="legal">
+                    <input type="checkbox" name="legal" id="legal">Estoy de acuerdo <!--El input está dentro del label-->
+                </label>
+                <label>¿Quieres recibir nuestro boletín?
+                    <input type="radio" name="boletin" id="boletin" value="si"/>Si
+                    <input type="radio" name="boletin" id="boletin" value="no"/>No
+                </label>
+                <br/><br/><br/>
+                <button class="submit" disabled>Enviar</button><!--disabled es una propiedad del button de tipo boolean y hacen que el botón esté desactivado-->
+            </form>
+        </body>
+</html>
