@@ -15,8 +15,9 @@
                 //si mando #contacto con esto obtendré "#contacto*" de esta manera le estoy diciendo que coja todo el formulario entero
                 //aquí defino el evento, cuando suelte la tecla (sea la que sea).
                     if(checkInput("#nombre", validosNombre) &&
-                        checkInput("#apellidos", validosNombre) &&
-                        checkInput("#email", validosEmail))
+                    checkInput("#apellidos", validosNombre) &&
+                    checkInput("#email", validosEmail) &&
+                    checkSelect("#edad") && checkTextArea("#comentario"))
                         $(idForm + " button.submit").removeAttr("disabled");//MUY IMPORTANTE EL ESPACIO
                     else
                         $(idForm + " button.submit").attr("disabled", "disabled");
@@ -26,6 +27,15 @@
             function checkInput(idInput, validacion){//donde idInput pasaré '#nombre'
                 return $(idInput).val().match(validacion) ? true: false; //val devuelve el valor del objeto (que acabamos de nombrar bien con el $(idInput) y la comparamos (match) con un string que tenga un parámetro de validación; el true y el false nos lo podiamos haber ahorrado.
             }
+            
+            function checkSelect(idSelect){
+                return $(idSelect).val() ? true: false;
+            }
+            function checkTextArea(idText){
+                return $(idText).val().length > 12 ? true: false; //nos dice si el textArea tiene más de 12 caracteres
+            }
+            
+
         </script> 
         <style type="text/css">
             form{margin:1em}
