@@ -17,7 +17,10 @@
                     if(checkInput("#nombre", validosNombre) &&
                     checkInput("#apellidos", validosNombre) &&
                     checkInput("#email", validosEmail) &&
-                    checkSelect("#edad") && checkTextArea("#comentario"))
+                    checkSelect("#edad") && 
+                    checkTextArea("#comentario")&&
+                    checkRadioBox("#legal")&&
+                    checkRadioBox("[name = boletin]"))
                         $(idForm + " button.submit").removeAttr("disabled");//MUY IMPORTANTE EL ESPACIO
                     else
                         $(idForm + " button.submit").attr("disabled", "disabled");
@@ -33,6 +36,9 @@
             }
             function checkTextArea(idText){
                 return $(idText).val().length > 12 ? true: false; //nos dice si el textArea tiene más de 12 caracteres
+            }
+            function checkRadioBox(nombreRadioBox){
+                return $(nombreRadioBox).is(":checked") ? true: false;
             }
             
 
