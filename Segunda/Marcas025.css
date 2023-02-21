@@ -6,8 +6,8 @@ ul{
 li{
     display: inline-block;
     padding: 5px;
-    background-color: #972ee2;
-    border: 1px outset #972ee2;
+    background-color: #579ded;
+    border: 1px outset #579ded;
     color: white;
     width: 100px;
     position: relative;
@@ -35,16 +35,16 @@ li{
 }
 /*lo ponemos en la posición 2 del eje de las z, cuanto mayor es el valor, más arriba está, está sobre*/
 .submenu>li:hover{/*Los list items que están justo después del menu*/
-    background-color: #837edb;
+    background-color: #187bed;
     transform: scale(1.1); /*lo aumentamos un 10%*/
-    text-shadow: 2px 2px 2px white;
+    text-shadow: 2px 2px 2px rgb(36, 36, 36);
     z-index:2;
     animation-name: botonsubmenu;
 }
 /*Programa lo que hace la animacion, al empezar, a la mitad y al final*/
 @keyframes botonsubmenu{
     0%{
-        text-shadow:200px 2px 20px white;
+        text-shadow:200px 2px 20px rgb(36, 36, 36);
     }
     50%{
         transform:scale(1.3);
@@ -52,22 +52,22 @@ li{
     }
     100%{
         transform:scale(1.1);
-        text-shadow: 2px 2px 1px white;
+        text-shadow: 2px 2px 1px rgb(36, 36, 36);
     }
 }
 #menuHorizontal>li:hover{
-    background-color: #abc;
+    background-color: rgb(0, 86, 172);
     padding-top: 10px;
     box-shadow: 0px 0px 4px #375f85;
     border-radius: 10px 10px 0px 0px;
-    border: 1px outset #D0dbe6;
-    text-shadow: 1px 1px 1px #375f85;
+    border: 1px outset #1e7fe1;
+    text-shadow: 1px 1px 1px #2b4c6a;
 }
 #menuHorizontal>li:first-child{/* Se lo aplicamos al primero siempre*/
-    background-color: #abc;
+    background-color: rgb(0, 86, 172);
     padding-top: 10px;
     box-shadow: 0px 0px 4px #375f85;
     border-radius: 10px 10px 0px 0px;
-    border: 1px outset #D0dbe6;
-    text-shadow: 1px 1px 1px #375f85;
+    border: 1px outset #1e7fe1;
+    text-shadow: 1px 1px 1px #2b4c6a;
 }
