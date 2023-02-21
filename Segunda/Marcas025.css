@@ -6,44 +6,68 @@ ul{
 li{
     display: inline-block;
     padding: 5px;
-    background-color: #837edb;
-    border: 1px outset #837edb;
+    background-color: #972ee2;
+    border: 1px outset #972ee2;
     color: white;
     width: 100px;
     position: relative;
-    margin: 2px;
+    margin: 0px;
     cursor: pointer;
 }
-
 #menuHorizontal{
     text-align: center;
 }
-/*#menuHorizontal>li{ Los list item que estén inmediatamente dentro del menú
-    background-color: #837edb;
-    border: 1px outset #837edb;
-    padding: 5px;
-    position: relative;
-}
-.submenu{/*Los objetos que sean de la clase submenu
+.submenu{
     position: absolute;
-    top: 0;
-    left: 199px; /*para dar la sensación que esta dentro del otro, por un pixel
-    display: none;
+    top: 30px;
+    left: 1px; 
+    display: bl;
+    box-shadow: 0px 5px 5px #000;
+    border-radius: 0px 0px 10px 10px;
+    /*-moz*/animation-duration: 0.8s;/*Para el navegador mozilla -moz*/
+}
+.submenu li:last-child{/*los list items de la clase submenu que sean los últimos*/
+    border-radius: 0px 0px 10px 10px;
 }
 .submenu>li{
-    background-color: #972ee2;
-    border: 1px outset #972ee2;
-    width: 180px;
-    padding: 2px;
+    display: none;
+    animation-duration: 1.5s;
 }
-#menuHorizontal li:hover{ /*Cuando colocamos el cursor sobre el menu
-    background-color: #5b188a;
-    color:white;
-    cursor: pointer;
+/*lo ponemos en la posición 2 del eje de las z, cuanto mayor es el valor, más arriba está, está sobre*/
+.submenu>li:hover{/*Los list items que están justo después del menu*/
+    background-color: #837edb;
+    transform: scale(1.1); /*lo aumentamos un 10%*/
+    text-shadow: 2px 2px 2px white;
+    z-index:2;
+    animation-name: botonsubmenu;
 }
-#menuHorizontal li:hover ul{/*Evento que se produce sobre el list item menu.
-    a la derecha de la directiva : a quién afecta y de qué manera
-    a la izquierda de la directiva ':' actua cuando actuamos sobre menu li
-    display: block; /* lo mostramos
+/*Programa lo que hace la animacion, al empezar, a la mitad y al final*/
+@keyframes botonsubmenu{
+    0%{
+        text-shadow:200px 2px 20px white;
+    }
+    50%{
+        transform:scale(1.3);
+        border-radius: 5px;
+    }
+    100%{
+        transform:scale(1.1);
+        text-shadow: 2px 2px 1px white;
+    }
 }
-*/
+#menuHorizontal>li:hover{
+    background-color: #abc;
+    padding-top: 10px;
+    box-shadow: 0px 0px 4px #375f85;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px outset #D0dbe6;
+    text-shadow: 1px 1px 1px #375f85;
+}
+#menuHorizontal>li:first-child{/* Se lo aplicamos al primero siempre*/
+    background-color: #abc;
+    padding-top: 10px;
+    box-shadow: 0px 0px 4px #375f85;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px outset #D0dbe6;
+    text-shadow: 1px 1px 1px #375f85;
+}
