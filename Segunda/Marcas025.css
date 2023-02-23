@@ -21,16 +21,16 @@ li{
     position: absolute;
     top: 30px;
     left: 1px; 
-    display: bl;
+    display: none;
     box-shadow: 0px 5px 5px #000;
     border-radius: 0px 0px 10px 10px;
-    /*-moz*/animation-duration: 0.8s;/*Para el navegador mozilla -moz*/
+    animation-duration: 1.5s;
 }
 .submenu li:last-child{/*los list items de la clase submenu que sean los últimos*/
     border-radius: 0px 0px 10px 10px;
 }
 .submenu>li{
-    display: none;
+    display:block;
     animation-duration: 1.5s;
 }
 /*lo ponemos en la posición 2 del eje de las z, cuanto mayor es el valor, más arriba está, está sobre*/
@@ -47,7 +47,7 @@ li{
         text-shadow:200px 2px 20px rgb(36, 36, 36);
     }
     50%{
-        transform:scale(1.3);
+        transform:scale(1.8);
         border-radius: 5px;
     }
     100%{
@@ -70,4 +70,25 @@ li{
     border-radius: 10px 10px 0px 0px;
     border: 1px outset #1e7fe1;
     text-shadow: 1px 1px 1px #2b4c6a;
+}
+#menuHorizontal li:hover ul{ 
+    display:block;
+    animation-name:submenu;
+}
+@keyframes submenu{
+    0%{
+        opacity: 0;
+        left: -150px;
+    }
+    50%{
+        transform:skew(10deg);
+        box-shadow: -10px 4px 8px 5px #000;
+    }
+    100%{
+        opacity: 1;
+        left: 1px;
+    }
+}
+#menuHorizontal>li{
+    transition: all 0.6s ease; /*la transición cuando cambiamos de un li a otro*/
 }
