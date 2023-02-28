@@ -1,0 +1,52 @@
+<html>
+<head><title>Ejemplo Examen 1</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+$(document).ready(function(){
+
+    $("#deslizar").click(function(event){
+        $("#rectangulo").slideUp(4000);
+    });
+    $("#deslizar2").click(function(){
+        $("#rectangulo").slideDown(1000);
+    });
+    $("#mover").click(function(){
+        $("#rectangulo").animate({marginLeft:'600px'}, "slow");
+    });
+    $("#reset").click(function(){
+        $("#rectangulo").animate({marginLeft:'10px'}, "slow", function(){
+            $("#rectangulo").css("background-color", "yellow");
+        });
+    });
+    $("#ocultar").click(function(){
+        $("#rectangulo").hide(4000);
+    });
+    $("#ocultarymostrar").click(function(){
+        $("#rectangulo").slideUp(4000, function(){
+            $("#rectangulo").slideDown(4000);
+        });
+    });
+    $("#Toggle").click(function(event){
+        $("#rectangulo").slideToggle(2000);
+    });
+    $("#Pintar").click(function(event){
+        $("#rectangulo").css("background-color", "red");
+    });
+});
+
+
+
+</script>
+</head>
+<body>
+    <input type="button" id="deslizar" value="Ocultar deslizando">
+    <input type="button" id="deslizar2" value="Mostrar">
+    <input type="button" id="mover" value="Mover">
+    <input type="button" id="ocultar" value="Desaparecer">
+    <input type="button" id="ocultarymostrar" value="Ocultar y mostrar">
+    <input type="button" id="Toggle" value="Toggle">
+    <input type="button" id="Pintar" value="Pintar">
+    <input type="button" id="reset" value="RESET">
+    <div id="rectangulo" style="padding:500px 300px 30px 300px; background-color: yellow; position: absolute; margin-left: 10px;"></div>
+</body>
+</html>
