@@ -11,3 +11,77 @@ body{
     position: relative;
     z-index: 2;
 }
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: center; 
+}
+#menu>li{/*los list items directamente pegados al menu*/
+    display: inline-block; /*para que se pongan uno al lado del otro pero solo los primeros, el resto sigue en vertical*/
+    padding: 5px;
+    margin: 0px 10px 0px 10px;
+}
+.panel{/*los párrafos div de la clase panel*/
+    background-color: rgb(7%,42%, 38%);
+    color: #FFF;
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px #000 inset, 0px 0px 5px #000;
+    padding-top: 100px;
+    position: relative; /*para que el panel se pueda posicionar en relación a la barra*/
+    transition: all ease 2s;/*para que el panel se mueva con una transición*/
+    transform-style: preserve-3d;/*para darle propiedad de 3d y que se oculte la cara trasera y la cara frontal se muestre*/
+    top: -250px;/*para que no se vea la imagen y luego poder animar la bajada*/
+}
+.panel:hover{
+    animation: animacion ease 2s forwards;
+}
+@keyframes animacion{
+    0%{
+        top: -250px;
+    }
+    50%{
+        top: -20px;
+        transform: rotateY(0deg);
+    }
+    100%{
+        top: -20px;
+        transform: rotateY(180deg);
+    }
+}
+.front>img{/*la imagen justo después de la clase front*/
+    margin-bottom: 50px;
+}
+.front{
+    backface-visibility: hidden;/*para que no se vea la parte de atrás*/
+}
+.back{/*la lista con las opciones del menú*/
+    position: absolute;
+    top: 20px;
+    transform: rotateY(180deg) translateZ(100px);/*para que se vea la parte de atrás*/
+}
+.back>ul>li{
+    background-color: #90DDD2;
+    width: 140px;
+    margin-top: 30px;
+    padding: 5px;
+    box-shadow: 0px 0px 3px #136C60 inset;
+}
+.back>ul>li:hover{
+    transform: scale(1.2);
+    cursor: pointer;/*cursor como mano*/
+    box-shadow: 0px 5px 0px hsl(171, 53%, 42%), /*efecto de sombra*/
+                0px 10px 10px #000,
+                0px 0px 3px #136C60 inset;
+    border-radius: 3px;
+}
+.back>ul>li:active{
+    transform: scale(1.2) 
+                translateY(3px);/*para que se vea que se ha pulsado mover 3px hacia abajo*/
+    box-shadow: 0px 3px 0px hsl(171, 53%, 42%), 
+                0px 10px 10px #000,
+                0px 0px 3px #136C60 inset;
+    border-radius: 3px;
+}
