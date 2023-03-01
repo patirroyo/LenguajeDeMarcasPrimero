@@ -1,12 +1,14 @@
 <html>
 <head><title>Animación II</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.min.js"></script><!-- para que funcione el animate backgrondColor-->
 <script language="JavaScript">
     $(document).ready(function(){
         $("button").click(function(event){//para acceder a la marca lo hacemos con su nombre entre comillas, sin mas
             //alert("aibaiba")
             $("div").animate({left:'300px'}, "slow");//cambiamos la posición en el eje de las x, propiedad 'left'
-            $("div").animate({fontSize:'10em'}, 10000);//cambiamos el tamaño de la letra
+            $("div").animate({fontSize:'10em'}, 2000);//cambiamos el tamaño de la letra
+            $("div").animate({backgroundColor:'red'}, 2000);//para que funcionen las animaciones de color, hay que poner el plugin de jquery ui
         });
     });
 
