@@ -1,20 +1,29 @@
 <html>
-<head><title>Transición Ejercico2</title>
-<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+    <head><title>Mostrar parrafo oculto CSS</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
 
-<style type="text/css">
-        div{background-color: red;
-            border-radius: 50%;
-            padding: 10px;/* separación entre el borde y el contenido, al aumentar esta separación, automáticamente el párrafo ocupa más espacio*/
-            transition: all 2s ease}
-        div:hover{background-color:purple;
-                    border-radius: 0%;
-                    padding: 200px;} /*padding: 200px; es para que el div se agrande cuando el raton esta encima del div se provoca una transición*/
+        <style type="text/css">
+            .primero,.segundo{display:none;/*ocultar ambos divs*/
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                background-color: #F1F1f1;
+                                position: relative;
+                                width: 200px}
+            #primero:hover .primero{display:block;}/*mostrar el div oculto*/
+            #segundo:hover .segundo{display:block;}/*mostrar el div oculto*/
+                                    
+        </style>
+    </head>
+        <body>   
+            <ul>
+                <li id="primero">Mostrar el primer DIV oculto
+                    <div class="primero">Contenido del primer DIV</div>
+                </li>
+                <li id="segundo">Mostrar el segundo DIV oculto
+                    <div class="segundo">Contenido del segundo DIV</div>
+                </li>
+                <!-- hover limita su actuación a los objetos declarados dentro del objeto sobre el que se programa el evento, por eso están dentro de la marca <li>-->
+            </ul>
 
-</style>
-</head>
-<body>   
-<div style="width:100px; height:100px"
-
-</body>
+        </body>
 </html>

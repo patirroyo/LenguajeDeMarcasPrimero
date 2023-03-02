@@ -1,49 +1,44 @@
 <html>
-    <head><title>Menú con listas</title>
+    <head><title>Carrusel</title>
         <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
-        <link rel="stylesheet" href="Marcas020.css"type="text/css"><!--Le adjuntamos, linkamos un archivo de estilo, le aplicamos los estilos del archivo-->
+        
         <script>
             $(document).ready(function(event){
-                $(".contenedor div").hide();
-                $(".contenedor div:first").show();
-                $("ul.tabs li:first").addClass("activa");
-                $("ul.tabs li").click(function(){//cuando ponemos ul.tabas se refiere a los objetos de una lista desordenada de la clase tabs y el li es que nos referimos a cualquier elemento li dentro de los ul.tabs
-                    $("ul.tabs li").removeClass("activa");
-                    $(this).addClass("activa");
-                    $(".contenedor div").hide();
-                    var parrafoAActivar = $(this).find("a").attr("href"); //Coge el href del a que está dentro del this
-                    $(parrafoAActivar).show();
-
+                $("#prev").click(function(){
+                    $("#galeria li:last").prependTo("#galeria");//coge el último elemento y lo mete en la primera posicón de otro objeto.
                 });
+                $("#next").click(function(){
+                    $("#galeria li:first").appendTo("#galeria"); //coge el primero y lo pone al final
+                });
+            
             });
         </script> 
+        <style type="text/css">
+            li{
+                float: left;
+                list-style: none;
+            }
+            ul{
+                width: 600;
+                height: 400;
+                overflow: hidden; /*lo que esté fuera de la altura que no se vea*/
+            }
+            ul, li{
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
+
+
+
     </head>
         <body>   
-            <table align="center">
-                <tr><td>
-                    <ul class="tabs"> <!--la clase la definimos nosotros en estilos y los estilos que le aplicaremos a ella, se los aplicaremos a todos los elementos que contenga.
-                    Los items son los elementos de la lista-->
-                        <li><a href="#tab1">Menú 1</a></li>
-                        <li><a href="#tab2">Menú 2</a></li>
-                        <li><a href="#tab3">Menú 3</a></li>
-                        <li><a href="#tab4">Menú 4</a></li>
-                    </ul>
-                    <div class="contenedor">
-                        <div id="tab1">
-                            CONTENIDO 1
-                        </div>
-                        <div id="tab2">
-                            CONTENIDO 2
-                        </div>
-                        <div id="tab3">
-                            CONTENIDO 3
-                        </div>
-                        <div id="tab4">
-                            CONTENIDO 4
-                        </div>
-                    </div>
-                </td></tr>
-            </table>
-
+            <ul id="galeria"> 
+                <li><img width="600" height="400" src="imagenes/1.jpg"></li>
+                <li><img width="600" height="400" src="imagenes/2.jpg"></li>
+                <li><img width="600" height="400" src="imagenes/3.jpg"></li>
+            </ul>
+            <button id="prev">Anterior</button>
+            <button id="next">Siguiente</button>
         </body>
 </html>

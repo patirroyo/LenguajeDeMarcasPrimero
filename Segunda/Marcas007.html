@@ -1,81 +1,41 @@
 <html>
-<head><title>Eventos en general</title>
+<head><title>Jugando con la opacidad</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
 <script language="JavaScript">
-    $(document).ready(function(){
-            $(document).on("mousemove", function(e){//Estamos guardando en la memoria, cuando se produzca el evento mousemove sobre cualquier parte del objeto document
-                $("#divCoordenadas").html("<strong>"+ e.pageX + "</strong> - <strong>" + e.pageY + "</strong");//equivalente a innerHTML, mete lo que sea dentro de las marcas HTML (<></>)
-            });
-            $(document).on("contextmenu", function(e){ //hacer click con el botón derecho
-                e.preventDefault();
-                $("#divEstado").html("<strong>Click derecho</strong>");
-            });
-            $(document).on("click", function(e){ //hacer click con el botón izquierdo
-                e.preventDefault();
-                $("#divEstado").html("<strong>Click izquierdo</strong>");
-            });
-            $("#divScroll").on("scroll", function(e){ //hacer scroll
-                e.preventDefault();
-                $("#divEstado").html("<strong>Scroll detectado</strong>");
-            });
-
+$(document).ready(function(){
+    $("#ocultar").click(function(event){//al hacer click (evento) sobre ocultar (objeto que llamamos con $("") se produce la función {} y le pasamos el evento (event) aunque no lo vayamos a usar.
+        $("#rectangulo").fadeOut(4000);//la función de jquery fadeOut se ejecuta sobre el objeto rectángulo.
     });
-    
+    $("#mostrar").click(function(event){
+        $("#rectangulo").fadeIn(4000, "swing", function(){//le podemos pasar el tiempo en ms y luego un string con el tipo de movimiento, además una función que se ejecutará
+            alert("Se acabó");
+        });
+    });
+    $("#mostrar2").click(function(event){
+        $("#rectangulo").fadeTo(2000, 0.5, function(){//le podemos pasar el tiempo en ms y luego un valor entre 0 y 1, decimales con . que será la opacidad, además una función que se ejecutará
+            alert("Se acabó");
+        });
+    });
+    $("#toggle").click(function(event){
+        $("#rectangulo").fadeToggle(2000, function(){
+            alert("Se Toggleó");
+        });
+    });
+
+});
 
 
 </script>
 <style type="text/css">
-    #divScroll{
-        margin: 20px 0;
-        padding: 10px;
-        height: 100px;
-        overflow-y: scroll; /*desbordamiento*/
-        border-radius: 5px;
-        box-shadow: 1px 1px 10px #c0c0c0;
-        float: right;/*alineación*/
-    }
-    #divCoordenadas{
-        border: solid 1px #ccc;
-        padding: 10px;
-        width: 200px;
-        height: 15px;;
-        text-align: center;
-        border-radius: 5px;
-        box-shadow: 1px 1px 10px #c0c0c0;
-        float: left;
-    }
-    #divEstado{
-        padding: 10px;
-        width: 200px;
-        height: 15px;;
-        text-align: center;
-        border-radius: 5px;
-        box-shadow: 1px 1px 10px #c0c0c0;
-        float: right;
-    }
+
 
 </style>
 </head>
 <body>
-<div id="divCoordenadas"></div>
-<div id="divEstado"></div>
-<div id="divScroll">
-<p>
-    Casi en un abrir y cerrar de ojos empieza la temporada ciclista 2023. Todos los equipos ya han realizado sus concentraciones y los que no las han finalizado apuran sus últimos días de stage y piensan ya en poner el material a punto para los próximos retos.
-</p>
-<p>
-    Un calendario UCI que en España empieza el 22 de enero con la Clàssica Comunitat Valenciana y a la que sigue el Trofeo Calvià en Mallorca en categoría masculina y que en mujeres empieza a rodar con la Women Cycling Pro Costa de Almería el 29 de enero.
-</p>
-<p>
-    Antes, el día 15, empieza en Australia, en el Santos Tour Down Under, el calendario World Tour femenino, que en hombres arranca dos días más tarde con la cita masculina del Tour Down Under.
-</p>
-<p>
-    Una temporada que por lo que respecta a las grandes vueltas ciclistas empieza con el Giro de Italia (del 6 al 28 de mayo), sigue con el Tour de Francia, del 1 al 23 de julio y finaliza con la Vuelta, del 26 de agosto al 17 de septiembre, y sus dos primeras etapas por las calles de Barcelona.
-</p>
-<p>
-    Esta es una amplia selección de las principales citas ciclistas que ningún aficionado debería perderse:
-</p>
-
-</div>
+<div id="rectangulo" style="padding: 10px 10px 10px 10px; background-color: #000; color:#fff;"> Rectángulo de ejemplo que variará de opacidad</div>
+<input type="button" id="ocultar" value="Ocultar con fadeOut()">
+<input type="button" id="mostrar" value="Mostrar con fadeIn()">
+<input type="button" id="mostrar2" value="Mostrar con fadeTo()"><!--aquí ya jugamos con la opacidad, podemos quedarnos con valores intermedios-->
+<input type="button" id="toggle" value="Mostrar con fadeToggle()">
 </body>
 </html>

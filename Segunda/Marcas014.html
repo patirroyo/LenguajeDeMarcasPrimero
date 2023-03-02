@@ -1,24 +1,16 @@
 <html>
-<head><title>Añadir botones, método append</title>
+<head><title>Tratar con el evento MouseDown</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
-<script language="JavaScript">
-    var imagen = $("<img>", {src:"imagenes/papelera.png", //primero instanciamos un objeto, imagen.
-                            id:"imagen",
-                            css:{"padding":"2px",
-                                "cursor":"pointer",
-                                "height":"200px"},
-                            click:function(e){document.location="Marcas013.html";}//document.location es una redireccion, que se producirá al hacer click.
-                });//Son todo duplas clave:valor, es un vector de duplas de propiedades de las marcas; como se pueden modificar varias propiedades, tenemos un vector dentro de otro vector. 
-                //Se puede crear el objeto 
-    
-    
+<script language="JavaScript">    
     $(document).ready(function(){
-        $("#boton").click(function(){
-           // $(".prueba").append($(imagen));
-            $("body").append($(imagen))//si hubiermos querido modificar varios objetos, habriamos creado una clase y accederiamos a ella con .class así modificariamos todos los objetos de la clase.
+        $("#escribe").keydown(function(event){
+                $("#escribe").val("");
+                    $("#parrafo").text("El código de la tecla " + String.fromCharCode(event.which) + " es " + event.which);//which el codigo de la tecla que has pulsado
+        });
+        $("#escribe").keyup(function(event){
+                $("#parrafo").text("Acabas de soltar la tecla");
         });
     });
-
 
 </script>
 <style type="text/css">
@@ -26,12 +18,16 @@
 </style>
 </head>
 <body>
-    <input type="button" id="boton" value="Incorporar objeto">
-    <div class="prueba"></div>
-    <div class="prueba"></div>
-    <div class="prueba"></div>
+    <p>
+        <input type="text" id="escribe">
+    </p>
+    <p id="parrafo">
+        Manten pulsada una tecla y después suéltala.
+    </p>
 
-    <p>Vamos a crear objetos pero no a mostrarlos</p>
+    <!--Cuando pulsamos el boton izquierdo, se produce un evento click y muchos MouseDown (hasta que se levante el dedo)
+    Lo mismo sucede cuando pulsamos una tecla.-->
+    
 
 
 </body>

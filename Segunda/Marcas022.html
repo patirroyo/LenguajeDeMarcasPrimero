@@ -1,55 +1,87 @@
 <html>
-    <head><title>Carrusel II</title>
+    <head><title>Formulario con sus validaciones</title>
         <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
         
         <script>
-            $(document).ready(function(event){
-                $("#galeria div:gt(0)").hide(); //accedemos al objeto div de galeria, los : son directivas, funciones pequeñas. la :gt dice que se aplique la función hide a todos menos al 0 (al primero)
-                setInterval(function(){//función de jQuery, primer parámetro {} instrucciones y segundo los ms que transcurren desde que se ha producido para que se repita.
-                $("#galeria div:first-child").fadeOut()//cogemos el hijo del primero, es decir, lo que hay dentro del div(la imagen y el párrafo p) y lo dejamos de mostrar
-                .next("div").fadeIn(1000)//mostramos el siguiente div
-                .end().appendTo("#galeria"); //el último div lo ponemos al principio de galeria
-                },4000);
+            var validosNombre = "^[a-z A-Z]{4,30}$";//admite letras en minúsuclas de la a-z, espacios y letras mayúsculas de la A a la Z. Entre 3 y 30 repeticiones de eso.
+            var validosEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+
+            $(function(){//se ejecuta esta función una vez cuando se abre la página
+                checkForm("#contacto");//llama a la función checkForm y le pasa #contacto
             });
+
+            function checkForm(idForm){
+                $(idForm + " *").on("change keyup", function(){//MUY IMPORTANTE EL ESPACIO para que se cree bien el String y llamar a lo que hay que llamar
+                //si mando #contacto con esto obtendré "#contacto *" de esta manera le estoy diciendo que coja todo el formulario entero
+                //aquí defino el evento, cuando suelte la tecla (sea la que sea).
+                    if(checkInput("#nombre", validosNombre) &&
+                    checkInput("#apellidos", validosNombre) &&
+                    checkInput("#email", validosEmail) &&
+                    checkSelect("#edad") && 
+                    checkTextArea("#comentario")&&
+                    checkRadioBox("#legal")&&
+                    checkRadioBox("[name = boletin]"))
+                        $(idForm + " button.submit").removeAttr("disabled");//MUY IMPORTANTE EL ESPACIO
+                    else
+                        $(idForm + " button.submit").attr("disabled", "disabled");
+                });
+            }
+
+            function checkInput(idInput, validacion){//donde idInput pasaré '#nombre'
+                return $(idInput).val().match(validacion) ? true: false; //val devuelve el valor del objeto (que acabamos de nombrar bien con el $(idInput) y la comparamos (match) con un string que tenga un parámetro de validación; el true y el false nos lo podiamos haber ahorrado.
+            }
+            
+            function checkSelect(idSelect){
+                return $(idSelect).val() ? true: false;
+            }
+            function checkTextArea(idText){
+                return $(idText).val().length > 12 ? true: false; //nos dice si el textArea tiene más de 12 caracteres
+            }
+            function checkRadioBox(nombreRadioBox){
+                return $(nombreRadioBox).is(":checked") ? true: false;
+            }
+            
+
         </script> 
         <style type="text/css">
-            #galeria{
-                    position: relative;
-                    width: 600;
-                    height: 400;
-                    overflow: hidden;
-                    border: 10px solid #333;
-                    margin:0 auto;
-                    padding:0;
-                    border-radius: 40px;
-
-            }
-            #galeria p{
-                    position: absolute;
-                    left: 100; /*Como está dentro, es 100 de la galería, no de la página*/
-                    bottom: 30;
-                    color: #eee;
-                    background: #990000;
-                    text-align: center;
-                    width: 400;
-                    height: 24px;
-                    padding: 5px;
-                    display: block;
-                    line-height: 22px;
-                    font-size: 22px;
-                    opacity: 0.7;
-                    border-radius: 40px;
-            }
+            form{margin:1em}
+            label{display:block;margin:.5em 0}
         </style>
 
 
 
     </head>
         <body>   
-            <div id="galeria"> 
-                <div><img width="600" src="imagenes/1.jpg"><p>Imagen 1</p></div>
-                <div><img width="600" src="imagenes/2.jpg"><p>Imagen 2</p></div>
-                <div><img width="600" src="imagenes/3.jpg"><p>Imagen 3</p></div>
-            </div>
+            <form name="contacto" id="contacto" method="post" action="www.adadf"><!-- method es el método de pasar los datos
+            Cuando se pasan los parámetros a traves del método get
+            es cuando aparecen en la wev con ....? nombre = valor&... 
+        
+            En este caso va a mandar el contenido entero donde manda el action en el momento en el que se ejecuta el metodo "submit()" que en este caso lo haremos mediante un botón.-->
+                <label for="nombre">Nombre:</label>
+                <input name="nombre" id="nombre" size="30">
+                <label for="apellidos">Apellidos:</label>
+                <input name="apellidos" id="apellidos" size="30">
+                <label for="email">E-mail:</label>
+                <input name="email" id="email" size="30">
+                <label for="edad">Edad:</label>
+                <select name="edad" id="edad">
+                    <option></option>
+                    <option value="18-25">18 a 25 años</option>
+                    <option value="26-45">26 a 45 años</option>
+                    <option value="46-65">46 a 65 años</option>
+                    <option value="+65">más de 65 años</option>
+                </select>
+                <label for="comentario">Comentario:</label>
+                <textarea name="comentario" id="comentario" cols="40" rows="4"></textarea>
+                <label for="legal">
+                    <input type="checkbox" name="legal" id="legal">Estoy de acuerdo <!--El input está dentro del label-->
+                </label>
+                <label>¿Quieres recibir nuestro boletín?
+                    <input type="radio" name="boletin" id="boletin" value="si"/>Si
+                    <input type="radio" name="boletin" id="boletin" value="no"/>No
+                </label>
+                <br/><br/><br/>
+                <button class="submit" disabled>Enviar</button><!--disabled es una propiedad del button de tipo boolean y hacen que el botón esté desactivado-->
+            </form>
         </body>
 </html>

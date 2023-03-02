@@ -1,31 +1,49 @@
 <html>
-    <head><title>Estilos y persiana</title>
+    <head><title>Menú con listas</title>
         <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        <link rel="stylesheet" href="Marcas019.css"type="text/css"><!--Le adjuntamos, linkamos un archivo de estilo, le aplicamos los estilos del archivo-->
         <script>
-            $(document).ready(function(event){//vamos a aplicar estilos css a través de js y con una función de jquery css
-                $("#caja").css({
-                                width:"200px",
-                                height:"15px",
-                                backgroundColor:"yellow",
-                                borderStyle:"solid",
-                                borderWidth:"3px",
-                                fontFamily:"Verdana",
-                                padding:"20px",
-                                fontSize:"12px",
-                                testAlign:"center",
-                                color:"blue"
-                });
-                $("#boton").click(function(){
-                    $("#caja").slideUp(3000, function(){//cuando se acaba la función se ejecuta la otra, SUELE CAER EN EL EXAMEN
-                        $("#caja").slideDown(3000);
-                    });
+            $(document).ready(function(event){
+                $(".contenedor div").hide();
+                $(".contenedor div:first").show();
+                $("ul.tabs li:first").addClass("activa");
+                $("ul.tabs li").click(function(){//cuando ponemos ul.tabas se refiere a los objetos de una lista desordenada de la clase tabs y el li es que nos referimos a cualquier elemento li dentro de los ul.tabs
+                    $("ul.tabs li").removeClass("activa");
+                    $(this).addClass("activa");
+                    $(".contenedor div").hide();
+                    var parrafoAActivar = $(this).find("a").attr("href"); //Coge el href del a que está dentro del this
+                    $(parrafoAActivar).show();
+
                 });
             });
         </script> 
     </head>
         <body>   
-            <input type="button" id="boton" value="Empezar">
-            <div id="caja">Bienvenidos al aula de 1H</div>
+            <table align="center">
+                <tr><td>
+                    <ul class="tabs"> <!--la clase la definimos nosotros en estilos y los estilos que le aplicaremos a ella, se los aplicaremos a todos los elementos que contenga.
+                    Los items son los elementos de la lista-->
+                        <li><a href="#tab1">Menú 1</a></li>
+                        <li><a href="#tab2">Menú 2</a></li>
+                        <li><a href="#tab3">Menú 3</a></li>
+                        <li><a href="#tab4">Menú 4</a></li>
+                    </ul>
+                    <div class="contenedor">
+                        <div id="tab1">
+                            CONTENIDO 1
+                        </div>
+                        <div id="tab2">
+                            CONTENIDO 2
+                        </div>
+                        <div id="tab3">
+                            CONTENIDO 3
+                        </div>
+                        <div id="tab4">
+                            CONTENIDO 4
+                        </div>
+                    </div>
+                </td></tr>
+            </table>
 
         </body>
 </html>

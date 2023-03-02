@@ -7,7 +7,7 @@
                 $("#divCoordenadas").html("<strong>"+ e.pageX + "</strong> - <strong>" + e.pageY + "</strong");//equivalente a innerHTML, mete lo que sea dentro de las marcas HTML (<></>)
             });
             $(document).on("contextmenu", function(e){ //hacer click con el botón derecho
-                e.preventDefault();
+                e.preventDefault();//evita que se ejecute la acción por defecto del evento que en este caso es el menú contextual al hacer click derecho
                 $("#divEstado").html("<strong>Click derecho</strong>");
             });
             $(document).on("click", function(e){ //hacer click con el botón izquierdo

@@ -1,41 +1,38 @@
 <html>
-<head><title>Parar una animación</title>
+<head><title>divAnimado</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
 <script language="JavaScript">
     $(document).ready(function(){
-        $("#flip").click(function(event){//para acceder al id lo hacemos con su nombre entre comillas, y un #
-            //alert("aibaiba");
-            $("#panel").slideDown(10000);
-        });
-        $("#parar").click(function(event){//para acceder a la marca lo hacemos con su nombre entre comillas, sin mas
-            //alert("aiba para maño!!!");
-            $("#panel").stop(); //actuamos sobre el objeto sobre el que se está realizando la animación.
-        });
+        $("#divAnimado1").animate({marginLeft:'600px'}, 2000);//jQuery espera los valores de las funciones normalizados, es decir convierte margin-left en marginLeft; quita el guión y pone la primera letra de la segunda palabra con mayúsculas.
+        $("#divAnimado2").animate({width:'200px', height:'200px'}, 2000);
+        $("#divAnimado3").animate({width:'200px', height:'200px', marginLeft:'600px'}, 2000)
+                        .animate({marginLeft:'300px'}, 'fast');//puedo poner dos funciones sobre el mismo objeto, lo que hay que dejar de poner es el punto y coma
     });
 
 
 </script>
 <style type="text/css">
-#panel, #flip{
-    padding: 5px;
-    font-size: 18px;
-    text-align: center;
-    background-color: #555;
-    color: white;
-    border:solid 1px #666;
-    border-radius: 3px;
+#divAnimado1, #divAnimado2, #divAnimado3{
+    width: 150px;
+    height: 150px;
+    margin-left: 50px;
+    margin-top: 50px;
+    background-color: #0000FF;
+    border-radius: 50%;
 }
-#panel{
-    padding: 50px;
-    display: none;
+#divAnimado2{
+    background-color: #FF0000; 
+}/*se queda con el último color que se le da*/
+#divAnimado3{
+    background-color: #00FF00;
 }
 
 </style>
 </head>
 <body>
-    <button id="parar">Parar Animación</button>
-    <div id="flip">Click aquí para aumentar el panel</div>
-    <div id="panel">FELIZ AÑO</div>
+    <div id="divAnimado1"></div>
+    <div id="divAnimado2"></div>
+    <div id="divAnimado3"></div>
 
 </body>
 </html>

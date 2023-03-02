@@ -1,28 +1,16 @@
 <html>
-<head><title>Jugando con la opacidad</title>
+<head><title>Animación con la opacidad</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
 <script language="JavaScript">
-$(document).ready(function(){
-    $("#ocultar").click(function(event){//al hacer click (evento) sobre ocultar (objeto que llamamos con $("") se produce la función {} y le pasamos el evento (event) aunque no lo vayamos a usar.
-        $("#rectangulo").fadeOut(4000);//la función de jquery fadeOut se ejecuta sobre el objeto rectángulo.
-    });
-    $("#mostrar").click(function(event){
-        $("#rectangulo").fadeIn(4000, "swing", function(){//le podemos pasar el tiempo en ms y luego un string con el tipo de movimiento, además una función que se ejecutará
-            alert("Se acabó");
+    $(document).ready(function(){
+        $("button").click(function(event){//para acceder a la marca lo hacemos con su nombre entre comillas, sin mas
+            //alert("aibaiba")
+            $("div").animate({height:'300px', opacity:'0.4'}, "slow");
+            $("div").animate({width:'300px', opacity:'0.8'}, "slow");
+            $("div").animate({height:'100px', opacity:'0.4'}, "slow");
+            $("div").animate({width:'10px', opacity:'1'}, "slow");
         });
     });
-    $("#mostrar2").click(function(event){
-        $("#rectangulo").fadeTo(2000, 0.5, function(){//le podemos pasar el tiempo en ms y luego un valor entre 0 y 1, decimales con . que será la opacidad, además una función que se ejecutará
-            alert("Se acabó");
-        });
-    });
-    $("#toggle").click(function(event){
-        $("#rectangulo").fadeToggle(2000, function(){
-            alert("Se Toggleó");
-        });
-    });
-
-});
 
 
 </script>
@@ -32,10 +20,12 @@ $(document).ready(function(){
 </style>
 </head>
 <body>
-<div id="rectangulo" style="padding: 10px 10px 10px 10px; background-color: #000; color:#fff;"> Rectángulo de ejemplo que variará de opacidad</div>
-<input type="button" id="ocultar" value="Ocultar con fadeOut()">
-<input type="button" id="mostrar" value="Mostrar con fadeIn()">
-<input type="button" id="mostrar2" value="Mostrar con fadeTo()"><!--aquí ya jugamos con la opacidad, podemos quedarnos con valores intermedios-->
-<input type="button" id="toggle" value="Mostrar con fadeToggle()">
+    <button>Iniciar Animación</button>
+    <div style="background:#98bf21;
+                height:100px;
+                width:10px;
+                position:absolute">
+    </div>
+
 </body>
 </html>

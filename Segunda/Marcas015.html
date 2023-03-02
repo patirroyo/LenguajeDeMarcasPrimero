@@ -1,34 +1,19 @@
 <html>
-<head><title>Tratar con el evento MouseDown</title>
+<head><title>Transición</title>
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
-<script language="JavaScript">    
-    $(document).ready(function(){
-        $("#escribe").keydown(function(event){
-                $("#escribe").val("");
-                    $("#parrafo").text("El código de la tecla " + String.fromCharCode(event.which) + " es " + event.which);//which el codigo de la tecla que has pulsado
-        });
-        $("#escribe").keyup(function(event){
-                $("#parrafo").text("Acabas de soltar la tecla");
-        });
-    });
 
-</script>
 <style type="text/css">
+        div{background-color: red;
+            border-radius: 50%;
+            transition: background-color 5s ease,
+                        border-radius 5s ease}
+        div:hover{background-color:purple;
+                    border-radius: 0%;} /*cuando el raton esta encima del div se provoca una transición*/
 
 </style>
 </head>
-<body>
-    <p>
-        <input type="text" id="escribe">
-    </p>
-    <p id="parrafo">
-        Manten pulsada una tecla y después suéltala.
-    </p>
-
-    <!--Cuando pulsamos el boton izquierdo, se produce un evento click y muchos MouseDown (hasta que se levante el dedo)
-    Lo mismo sucede cuando pulsamos una tecla.-->
-    
-
+<body>   
+<div style="width:100px; height:100px"/>
 
 </body>
 </html>

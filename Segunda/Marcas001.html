@@ -5,11 +5,11 @@
 <script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
 <script language="JavaScript">
 $(document).ready(function(){
-/* El equivalente al onload
+/* .ready El equivalente al onload
 Cuando trabajamos con objetos los llamamos con el $, dentro de los objetos hay 
 otros objetos, dentro del objeto bolsillo hay un usb y una llave; dentro de un 
 objeto hay otros objetos.
-El objeto document está dentro de la ventana, lo más grande. para acceder a un 
+El objeto document está dentro de la ventana, lo más grande. Para acceder a un 
 objeto que tenemos claro $(objeto): $(document) o $(window) o $(div).
 Como tenemos un párrafo que se llama rectangulo, accedemos a él a traves de su nombre.
 $("#rectangulo")
@@ -18,7 +18,8 @@ si nos referimos a un objeto que hemos creado con $("#"): $("#rectangulo")
 si nos referimos a una clase $(".#nomClase").
 
 A un conjunto de instrucciones se le denomina macrofunción.
-Estamos diciendo que al cargar (ready), cuando ocurre el EVENTO, la página se ejecutan las funciones que vienen a continuación que vienen dentro del function.
+Estamos diciendo que al cargar (ready), cuando ocurre el EVENTO, la página se 
+ejecutan las funciones que vienen a continuación que vienen dentro del function.
 */
     $("#deslizar").click(function(event){
         //cuando hacemos click en el objeto deslizar, se ejecuta la funcion
@@ -48,11 +49,6 @@ Estamos diciendo que al cargar (ready), cuando ocurre el EVENTO, la página se e
     $("#Toggle").click(function(event){
         $("#rectangulo").slideToggle(2000);
     });
-
-
-
-
-
 });
 
 

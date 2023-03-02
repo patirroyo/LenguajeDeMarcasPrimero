@@ -1,0 +1,36 @@
+ul{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+#menu{
+    width: 200px;
+}
+#menu>li{ /*Los list item que estén inmediatamente dentro del menú*/
+    background-color: #4bcdc8;
+    border: 1px outset #4bcdc8;
+    padding: 5px;
+    position: relative;
+}
+.submenu{/*Los objetos que sean de la clase submenu*/
+    position: absolute;
+    top: 0;
+    left: 199px; /*para dar la sensación que esta dentro del otro, por un pixel*/
+    display: none;
+}
+.submenu>li{
+    background-color: #189a96;
+    border: 1px outset #189a96;
+    width: 180px;
+    padding: 2px;
+}
+#menu li:hover{ /*Cuando colocamos el cursor sobre el menu*/
+    background-color: #089461;
+    color:white;
+    cursor: pointer;
+}
+#menu li:hover ul{/*Evento que se produce sobre el list item menu.
+    a la derecha de la directiva : a quién afecta y de qué manera
+    a la izquierda de la directiva ':' actua cuando actuamos sobre menu li*/
+    display: block; /* lo mostramos*/
+}
