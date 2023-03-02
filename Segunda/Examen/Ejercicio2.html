@@ -1,0 +1,26 @@
+<!--Crear una animación, con una duración de 10 segundos, en la que una imagen que hayas colocado en cualquier parte de la página, se mueva hasta la posición sobre la que hagas click.  2,5 puntos.-->
+<html>
+<head><title>divAnimado</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script> 
+<script language="JavaScript">
+    $(document).ready(function(){
+        $(document).click(function(event){
+            $("#divAnimado1").animate({
+                            marginLeft: event.pageX,
+                            marginTop: event.pageY}, 10000);
+        
+    });
+});
+
+</script>
+<style type="text/css">
+
+
+</style>
+</head>
+<body>
+    <div id="divAnimado1"><img src="imagenes/deportes.png"width="80px"></div>
+    
+
+</body>
+</html>

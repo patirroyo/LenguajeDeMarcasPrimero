@@ -1,0 +1,57 @@
+<!--Debéis crear unos párrafos DIV (debe funcionar para cualquier número de párrafos, pensar que si os dicen que hagáis 1.000 DIV’s, no podéis programar cada uno de ellos individualmente).  Los párrafos son pequeños y tienen color de fondo.  Cuando hagas click en uno cualquiera de ellos, debes crear una animación que aumente su anchura durante 2 segundos y luego la reduzca.  2,5 puntos.
+-->
+<html>
+    <head><title>Ejercicio 3</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        
+        <script language="javascript">
+            $(document).ready(function(){
+                var objetos = $("div"); 
+                objetos.click(clickMouse);
+                
+                function clickMouse(){
+                    $(this).animate({width: "300"},2000);
+                    $(this).animate({width: "100"},2000);
+                }
+            });
+            
+
+        </script> 
+        
+        <style type="text/css">
+
+            div{
+                width: 100px;
+                height: 50px;
+                margin-left: 0px;
+                margin-top: 1px;
+                background-color: green;
+                border-radius: 20px;
+            }
+           
+           
+            
+        </style>
+
+    </head>
+        <body>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            <div ></div>
+            
+           
+        </body>
+</html>

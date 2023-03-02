@@ -1,0 +1,28 @@
+<!--Hacer que una imagen aparezca y desaparezca cada 10 segundos.  Para hacer que desaparezca debéis utilizar una de las funciones de JQUERY y para que aparezca, la contraria. 2,5 puntos.-->
+
+<html>
+    <head><title>Ejercicio1</title>
+        <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+        
+        <script>
+            $(document).ready(function(event){
+                $("#imagen").hide(2000);
+                setInterval(function(){
+                    $("#imagen").show(2000);
+                    $("#imagen").hide(2000);
+                }, 10000);
+            });
+        </script> 
+        <style type="text/css">
+        </style>
+
+
+
+    </head>
+        <body>   
+            <div id="imagen"> 
+                <div><img width="600" src="imagenes/1.jpg"></div>
+                
+            </div>
+        </body>
+</html>

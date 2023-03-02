@@ -1,0 +1,71 @@
+<!--Tenéis una misma imagen, mostrada dos veces y enfrentada.  Tenéis que conseguir que al situarnos con el ratón sobre una de las imágenes, esta gire de manera que le ofrezca la nuca a la otra.  Lo tenéis que hacer sólo con estilos CSS, y la directiva utilizada puede ser la de estar sobre la imagen o la de pulsar sobre la misma.-->
+
+<html>
+
+<head>
+    <title>Menú desplegable 3D</title>
+    <script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+
+    <script>
+
+
+    </script>
+    <link rel="stylesheet" href="Marcas025.css" type="text/css">
+    <style type="text/css">
+.imagen{
+    display: inline-block;
+    position: relative; 
+    transition: all ease 2s;
+    transform-style: preserve-3d;
+    top: 250px;
+    left: 300px;
+    transform: rotateY(180deg);
+}
+.imagen2{
+    display: inline-block;
+    position: relative; 
+    transition: all ease 2s;
+    transform-style: preserve-3d;
+    top: 250px;
+    left: 300px;
+    transform: rotateY(0deg);
+}
+.imagen:hover{
+    animation: animacion ease 2s forwards;
+}
+@keyframes animacion{
+    0%{
+        transform: rotateY(180deg);
+    }
+    100%{
+        transform: rotateY(0deg);
+    }
+}
+.imagen2:hover{
+    animation: animacion2 ease 2s forwards;
+}
+@keyframes animacion2{
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(180deg);
+    }
+}
+    </style>
+
+</head>
+
+<body>
+    <div class="imagen">
+        <img width="80px" src="imagenes/noticias.png" alt="Noticias" />
+    </div>
+    <div class="imagen2">
+        <img width="80px" src="imagenes/noticias.png" alt="Noticias" />
+    </div>
+    </div>
+
+
+</body>
+
+</html>
