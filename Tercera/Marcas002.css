@@ -1,0 +1,32 @@
+#web{
+    width: 960px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 20px;
+}
+header{
+    padding: 1px;
+    background-color: #3B5998;
+    text-align: center;
+    color: white;
+    border-radius: 20px 20px 0px 0px;
+}
+nav{
+    background-color: #132D63;
+    padding: 2px;
+    text-align: center;
+}
+nav ul{ /* La lista que está dentro del nav */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul>li{ /* Los list item de la lista */
+    display: inline-block;/* Para que se muestren en línea */
+    width: 150px;
+    color: white;
+    background-color: #6E8CCC;
+    border: 1px outset #6E8CCC;
+    cursor: pointer;/* Para que cuando pase el raton se vea como un enlace */
+    padding: 2px;
+}
