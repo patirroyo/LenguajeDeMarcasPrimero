@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Marcas HTML5 para un formulario</title>
+        <script type=" text/javascript" src="jquery-1.11.2.min.js"></script>
+        <script type="text/javascript">
+            function mostrarEdad(valor){//función que muestra el valor del campo edad conforme vamos cambiando el valor de la bola de la barra
+                verEdad.innerHTML = valor; //también se puede hacer con innerText.
+            }
+        </script>
+    </head>
+    <body>
+        <form action="">
+            <h2>Formulario HTML5</h2>
+            <p>
+                Nombre: <input type="text" name="nombre" autofocus required>
+                <!-- autofocus: cuando carga la página el cursor se sitúa en el campo
+                required: nos obliga a introducir algo-->
+            </p>
+            <p>
+                E-mail: <input type="email" name="email" placeholder="Introduzca su email...">
+                <!--type="email": nos obliga a introducir un email válido es una marca HTML5. 
+                placeholder: texto que aparece en el campo cuando no hay nada escrito-->
+            </p>
+            <p>
+                Edad: <input type="range" min="18" max="70" value="35" name="edad" onchange="mostrarEdad(this.value)"><span id="verEdad">35</span>
+                <!--type="range": nos permite seleccionar un valor entre un mínimo y un máximo. Lo muestra como una barra.
+                    -min: valor mínimo
+                    -max: valor máximo
+                    -value: valor por defecto
+                    -onchange: evento que se ejecuta cuando cambia el valor del campo, cuando novemos la bola de la barra.
+                    -span: etiqueta que nos permite mostrar el valor del campo.-->
+            </p>
+            <p>
+                Color favorito: <input type="color" name="color">
+                <!--type="color": nos permite seleccionar un color.-->
+            </p>
+            <p>
+                Web: <input type="url" name="web" autocomplete="on">
+                <!--type="url": nos permite introducir una url.
+                -autocomplete: -->
+            </p>
+            <p>
+                Nº par de 0 a 10: <input type="number" name="par" min="0" max="10" step="2">
+                <!--type="number": nos permite introducir un número.
+                -min: valor mínimo
+                -max: valor máximo
+                -step: intervalo entre valores-->
+            </p>
+            <p>
+                Destinatario: <input type="email" name="destinatario" list="listaDestinatarios" required>
+                <datalist id="listaDestinatarios">
+                    <option value="admin@zaragoza.salesianos.edu">Administrador</option>
+                    <option value="agustin.sole@zaragoza.salesianos.edu">Agustín Solé</option>
+                    <option value="gorka.sanz@zaragoza.salesianos.edu">Gorka Sanz</option>
+                </datalist>
+                <!--type="email": nos permite introducir un email.
+                -list: nos permite crear una lista de opciones que se mostrarán cuando escribamos en el campo.
+                -datalist: etiqueta que nos permite crear una lista de opciones.
+                -option: etiqueta que nos permite crear una opción de la lista.-->
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+        </form>
+    </body>
+</html>
