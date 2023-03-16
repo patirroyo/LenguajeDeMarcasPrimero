@@ -30,3 +30,48 @@ nav ul>li{ /* Los list item de la lista */
     cursor: pointer;/* Para que cuando pase el raton se vea como un enlace */
     padding: 2px;
 }
+#contenido{
+    background-color: #879DCC;
+    min-height: 450px;/* Para que el contenido tenga un mínimo de altura */
+    padding: 1%;
+    width: 78%; /* Para que el contenido ocupe el 78% del ancho del objeto que lo contiene "principal"*/
+    float: left;/* Para que el contenido se muestre a alineado a la izquierda */
+}
+#contenido section{
+    width: 35%; /* Para que el contenido ocupe el 35% del ancho del objeto que lo contiene "contenido"*/
+    float: left; /* Para que el contenido se muestre a alineado a la izquierda */
+    padding: 2%; 
+    border: 1px dashed #3B5998;/* Para que se vea una linea punteada */
+    margin-left: 40px;
+}
+#contenido section article div{
+    height: 100px;
+    overflow: auto;
+}
+article{
+    text-align: justify;
+}
+article>div{
+    padding: 5px;
+}
+aside{
+    background-color: #6E8CCC;
+    min-height: 450px;
+    width: 18%;
+    padding: 1%;
+    float: right;
+}
+aside section{
+    text-align: center;
+    margin: 2px;
+    border-radius: 20px;
+    min-height: 150px;
+    border-color: white;
+}
+footer{
+    background-color: #3B5998;
+    text-align: center;
+    color: white;
+    padding: 7px;
+    border-radius: 0px 0px 20px 20px;
+}
