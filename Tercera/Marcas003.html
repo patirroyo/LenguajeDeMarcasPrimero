@@ -1,12 +1,35 @@
 <html>
     <head>
-        <title>Editor</title>
+        <title>Editor con HTML5</title>
         <link rel="stylesheet" href="Marcas003.css">
         <script type=" text/javascript" src="editor.js"></script> <!-- Aquí se llama al archivo editor.js que contendrá los métodos definidos por nosotros -->
     </head>
     <body>
         <div id="principal">
-            
+            <h2>Mensajes publicados</h2>
+            <div id="mensajes"></div> <!-- Aquí se mostrarán los mensajes publicados -->
+            <div id="editor">
+                <h3>Publica aquí tu mensaje</h3>
+                <div id="botones"><!-- Aquí se crean los botones para dar formato al texto -->
+                    <img src="iconos/negrita.jpg" class="boton" onclick="negrita()"> 
+                    <img src="iconos/cursiva.jpg" class="boton" onclick="cursiva()">
+                    <img src="iconos/subrayado.jpg" class="boton" onclick="subrayado()">
+                    <img src="iconos/alini.jpg" class="boton" onclick="alini()">
+                    <img src="iconos/alinc.jpg" class="boton" onclick="alinc()">
+                    <img src="iconos/alind.jpg" class="boton" onclick="alind()">
+                    <img src="iconos/alinf.jpg" class="boton" onclick="alinf()">
+                    <img src="iconos/lno.jpg" class="boton" onclick="listanordenada()">
+                    <img src="iconos/lor.jpg" class="boton" onclick="listaordenada()">
+                    <img src="iconos/subi.jpg" class="boton" onclick="subindice()">
+                    <img src="iconos/supi.jpg" class="boton" onclick="superindice()">
+                    <img src="iconos/fco.jpg" class="boton" onclick="fontcolor()">
+                    <img src="iconos/bco.jpg" class="boton" onclick="backcolor()">
+                    <img src="iconos/imagen.jpg" class="boton" onclick="imagen()">
+                    <img src="iconos/hipervinculo.jpg" class="boton" onclick="hipervinculo()">
+                </div>
+                <div id="contenido" contenteditable="true"></div> <!-- Aquí se escribirá el mensaje, se crea un div en el que se puede escribir -->
+                <input type="button" value="Publicar" onclick="publicar()"> <!-- Botón para publicar el mensaje -->
+            </div>
         </div>
     </body>
 </html>
