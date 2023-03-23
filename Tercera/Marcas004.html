@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>SessionStorage</title>
+        <!-- Vamos a almacenar, Storage.
+        Session: cuando te metes en un pagina, arranca una sesion de esa web, que dura un periodo de tiempo preestablecido(se puede cambiar); dura mientras vas utilizando el navegador. Cuando dejas el navegador y vuelves la sesión ha expirado. Durante ese perido puedes declarar variables que permanecerán en la memoria RAM y puedes acceder a ellas mientras dure la sesión. Este tipo de variables, son globales por lo que puedes acceder a ellas desde cualquier otra web.
+        Se utilizan por ejemplo:
+        Carrito de la compra: es un lugar de almacenamiento temporal, es decir, es una variable que está en memoria RAM
+        SessionStorage funciona como una variable de almacenamiento temporal, una especie de lista. Le puedes meter infinitos elementos.
+        Cada uno de los elementos tiene una estructura de tipo clave, valor (key, value)
+        -->
+        <script type="application/javascript">
+            window.onload=mostrar;
+
+            function mostrar(){
+                //no tenemos que declarar la variable, porque ya está declarada en el navegador, ya existe.
+                contenido.innerHTML = "sessionStorage.length: " + sessionStorage.length;
+                sessionStorage.setItem("Antonio", 18);//este método añade un item(elemento) a la variable, también sirve para modificar. La clave, por ser clave, no puede estar repretida.
+                contenido.innerHTML += "<br>" +"sessionStorage.setItem('Antonio', 18); "
+                contenido.innerHTML += "<br>" +"sessionStorage.length: " + sessionStorage.length;
+                contenido.innerHTML += "<br>" + "sessionStorage.key(0): " + sessionStorage.key(0) + " //Clave del elemento 0 ";
+                contenido.innerHTML += "<br>" + "sessionStorage.getItem('Antonio'): "  + sessionStorage.getItem('Antonio') + " //Valor del elemento 'Antonio'";
+                sessionStorage["Pedro"] = 20;
+                contenido.innerHTML += "<br>" + "sessionStorage['Pedro'] = 20;";
+                contenido.innerHTML += "<br>" + "sessionStorage.length: " + sessionStorage.length;
+                contenido.innerHTML += "<br>" + "sessionStorage.key(1): " + sessionStorage.key(1) +  " //Clave del elemento 1 ";
+                contenido.innerHTML += "<br>" + "sessionStorage.removeItem('Antonio')";
+                sessionStorage.removeItem("Antonio");
+                contenido.innerHTML += "<br>" + "sessionStorage.length: " + sessionStorage.length;
+                contenido.innerHTML += "<br>" + "sessionStorage.key(1): " + sessionStorage.key(1) +  " //Clave del elemento 1 ";
+                contenido.innerHTML += "<br>" + "sessionStorage.key(0): " + sessionStorage.key(0) +  " //Clave del elemento 0 ";
+                contenido.innerHTML += "<br>" + "sessionStorage.clear();";
+                sessionStorage.clear();
+                contenido.innerHTML += "<br>" + "sessionStorage.length: " + sessionStorage.length;
+
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="contenido"></div>
+    </body>
+</html>
