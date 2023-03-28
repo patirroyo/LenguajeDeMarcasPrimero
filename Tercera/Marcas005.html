@@ -3,7 +3,36 @@
         <title>Carrito de la compra</title>
         <link rel="stylesheet" href="Marcas005.css">
         <script type="application/javascript">
-           
+        window.onload = ver;
+
+        function ver(){
+            cesta.innerHTML = "";
+            if(sessionStorage.length == 0)
+                cesta.innerHTML = "<h5>No hay productos en el carrito</h5>";
+            else{
+                cesta.innerHTML = "<table class='pro' width=90%><tr><th>PRO</th><th align='center'>UNDS</th><th>Eliminar</th></tr></table>";
+                for(i = 0; i < sessionStorage.length; i++){
+                    cesta.innerHTML += "<table class='pro' width=90%><tr><td align='left'><img src ='iconos2/" + sessionStorage.key(i) + ".jpg'> " + sessionStorage.key(i) + 
+                                        "</td><td align='center'>" + sessionStorage.getItem(sessionStorage.key(i)) + 
+                                        "</td><td><img src='iconos2/eliminar.jpg' onclick=" + '"' + "eliminar('" + sessionStorage.key(i) + "')" + '"' + "></td></td></table>";
+                }
+            }
+        }
+        function almacenar(codigo){
+            if(sessionStorage.getItem(codigo)== null) //si el elemento no existe
+                sessionStorage.setItem(codigo, 1);//añadimos el elemento y 1 que será una unidad.
+            else
+                sessionStorage.setItem(codigo, parseInt(sessionStorage.getItem(codigo))+1);
+            ver();
+        }
+        function eliminar(codigo){
+            if(sessionStorage.getItem(codigo)== 1) 
+                sessionStorage.removeItem(codigo);
+            else
+                sessionStorage.setItem(codigo, parseInt(sessionStorage.getItem(codigo))-1);
+            ver();
+        }
+        
         </script>
     </head>
     <body>
@@ -13,29 +42,29 @@
                 <table>
                     <tr><th>IMAGEN</th><th>DESCRIPCIÓN</th><th>COMPRAR</th></tr>
                     <tr>
-                        <td><img src="iconos2/dell.jpeg"></td>
-                        <td><span id="d1">Ordenador Dell</span></td>
-                        <td><input type="button" value="Comprar"></td>
-                    </tr>
-                    <tr>
                         <td><img src="iconos2/acer.jpg"></td>
                         <td><span id="d1">Ordenador Acer</span></td>
-                        <td><input type="button" value="Comprar"></td>
+                        <td><input type="button" value="Comprar" onclick="almacenar('acer')"></td>
                     </tr>
                     <tr>
-                        <td><img src="iconos2/apple.png"></td>
+                        <td><img src="iconos2/apple.jpg"></td>
                         <td><span id="d1">Ordenador Apple</span></td>
-                        <td><input type="button" value="Comprar"></td>
+                        <td><input type="button" value="Comprar" onclick="almacenar('apple')"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="iconos2/dell.jpg"></td>
+                        <td><span id="d1">Ordenador Dell</span></td>
+                        <td><input type="button" value="Comprar" onclick="almacenar('dell')"></td>
                     </tr>
                     <tr>
                         <td><img src="iconos2/pb.jpg"></td>
                         <td><span id="d1">Ordenador Packard Bell</span></td>
-                        <td><input type="button" value="Comprar"></td>
+                        <td><input type="button" value="Comprar" onclick="almacenar('pb')"></td>
                     </tr>
                     <tr>
-                        <td><img src="iconos2/sony.jpeg"></td>
-                        <td><span id="d1">Ordenador Dell</span></td>
-                        <td><input type="button" value="Comprar"></td>
+                        <td><img src="iconos2/sony.jpg"></td>
+                        <td><span id="d1">Ordenador Sony</span></td>
+                        <td><input type="button" value="Comprar" onclick="almacenar('sony')"></td>
                     </tr>
                 </table>
             </div>

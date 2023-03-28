@@ -32,5 +32,16 @@ th{
         min-height: 200px;
 }
 #pie{
-        clear: both;/*para que no se superpongan los divs, le decimos que ese es el cierre*/
+        clear: both;/*para que no se superpongan los divs, le decimos que ese es el cierr*/
+}
+.pro{
+        border: 1px solid black;
+        margin-bottom: 5px;
+}
+.pro td{
+        width: 60;
+}
+.pro img{
+        width: 30px;
+        height: 30px;
 }
