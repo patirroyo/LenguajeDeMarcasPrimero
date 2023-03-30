@@ -12,21 +12,23 @@
             else{
                 cesta.innerHTML = "<table class='pro' width=90%><tr><th>PRO</th><th align='center'>UNDS</th><th>Eliminar</th></tr></table>";
                 for(i = 0; i < sessionStorage.length; i++){
-                    cesta.innerHTML += "<table class='pro' width=90%><tr><td align='left'><img src ='iconos2/" + sessionStorage.key(i) + ".jpg'> " + sessionStorage.key(i) + 
+                    cesta.innerHTML += "<table class='pro' width=90%><tr><td align='left'><img src ='iconos2/" + 
+                                        sessionStorage.key(i) + ".jpg'> " + sessionStorage.key(i) + 
                                         "</td><td align='center'>" + sessionStorage.getItem(sessionStorage.key(i)) + 
-                                        "</td><td><img src='iconos2/eliminar.jpg' onclick=" + '"' + "eliminar('" + sessionStorage.key(i) + "')" + '"' + "></td></td></table>";
+                                        "</td><td><img src='iconos2/eliminar.jpg' onclick=" + "eliminar('"
+                                        + sessionStorage.key(i) + "')" + "></td></tr></table>";
                 }
             }
         }
         function almacenar(codigo){
-            if(sessionStorage.getItem(codigo)== null) //si el elemento no existe
+            if(sessionStorage.getItem(codigo) == null) //si el elemento no existe
                 sessionStorage.setItem(codigo, 1);//añadimos el elemento y 1 que será una unidad.
             else
                 sessionStorage.setItem(codigo, parseInt(sessionStorage.getItem(codigo))+1);
             ver();
         }
         function eliminar(codigo){
-            if(sessionStorage.getItem(codigo)== 1) 
+            if(sessionStorage.getItem(codigo) == 1) 
                 sessionStorage.removeItem(codigo);
             else
                 sessionStorage.setItem(codigo, parseInt(sessionStorage.getItem(codigo))-1);
