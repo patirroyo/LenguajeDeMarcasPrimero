@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drag & Drop</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="Marcas006.css">
+        <script type="application/javascript">
+        function empezar(event){
+            event.dataTransfer.effectAllowed = 'move'; //le decimos que tipo de efecto queremos que se produzca, en este caso es mover
+            event.dataTransfer.setData("Data", event.target.getAttribute('id')); //le asignamos a Data el nombre (id) del elemento sobre el que se ha producido el evento. El target es el elemento sobre el que se ha producido el evento
+            event.dataTransfer.setDragImage(event.target, 25, 25); //le decimos que imagen queremos que se muestre mientras se arrastra el elemento, en este caso es la misma que el elemento sobre el que se ha producido el evento
+            return true;
+        }
+        function encima(event){
+            var arrastraId = event.dataTransfer.getData("Data"); //guardamos en una variable el nombre del elemento que se está arrastrando
+            var contenedorId = event.target.getAttribute('id'); //guardamos en una variable el nombre del elemento sobre el que se ha producido el evento
+            //alert(arrastraId + " - " + contenedorId); //mostramos un mensaje con los nombres de los elementos
+            if(contenedorId == 'des1') return false;
+            if((contenedorId == 'des2') && (arrastraId == 'ar2')) return false;
+            if((contenedorId == 'des3') && (arrastraId == 'ar3')) return false;
+        }
+        function terminar(event){
+            event.dataTransfer.clearData("Data"); //limpiamos el contenido de la variable Data
+            return true;
+        }
+        function soltar(event){
+            var arrastraId = event.dataTransfer.getData("Data"); //guardamos en una variable el nombre del elemento que se está arrastrando
+            event.target.appendChild(document.getElementById(arrastraId)); //añadimos el elemento que se está arrastrando al elemento sobre el que se ha producido el evento
+            event.stopPropagation(); //evitamos que se propague el evento
+            return true;
+        }
+        
+        </script>
+    </head>
+    <body>
+        <h1>Arrastrar y soltar con HTML5</h1>
+        <div id="des1" ondragover="return encima(event)" ondrop="return soltar(event)">
+            Contenedor 1
+        </div>
+        <div id="des2" ondragover="return encima(event)" ondrop="return soltar(event)">
+            Contenedor 2
+        </div>
+        <div id="des3" ondragover="return encima(event)" ondrop="return soltar(event)">
+            Contenedor 3
+        </div>
+        <div id="ar1" draggable="true" ondragstart="return empezar(event)" ondragend="return terminar(event)"><!--cuando empezamos a arrastrar llamamos a la función empezar y le pasamos el objeto event, que es el evento que se ha producido, el return es optativo
+        Cuando lo soltamos, llamamos a la función soltar()-->
+            A1
+        </div>
+        <div id="ar2" draggable="true" ondragstart="return empezar(event)" ondragend="return terminar(event)">
+            A2
+        </div>
+        <div id="ar3" draggable="true" ondragstart="return empezar(event)" ondragend="return terminar(event)">
+            A3
+        </div>
+        
+    </body>
+</html>
