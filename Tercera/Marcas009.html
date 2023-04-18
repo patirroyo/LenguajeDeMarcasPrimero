@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Insertar población y habitatnes</title>
+        
+        <script type="application/javascript">
+        
+
+        function cargar(){
+            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM DATA', [], function (tx, resultados) {
+                    var len = resultados.rows.length; 
+                    msg = "<p>Encontrados " + len + " registros:</p>"; 
+                    estado.innerHTML = msg;
+                    for (i = 0; i < len; i++){
+                        msg+= '<p><b>' + resultados.rows.item(i).nombre + '</b> ' + resultados.rows.item(i).habitantes + '</p>';
+                    }
+                estado.innerHTML += msg;
+                });
+            });
+        }
+        function rellenar(){
+            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                var nomb = document.getElementsByName("form").nombre;
+                var hab = document.getElementsByName("form").habitantes;
+                tx.executeSql('CREATE TABLE IF NOT EXISTS DATA (nombre, habitantes)');
+                tx.executeSql('INSERT INTO DATA (nombre, habitantes) VALUES ("' + nomb + '",' + hab + ')');
+            });
+            
+        }
+        
+        </script>
+    </head>
+    <body onload="cargar()">
+        <div id="principal">
+            <h1>Insertar población y habitantes</h1>
+            <div id="productos">
+                <table>
+                    <form id="form" action="" method="post" >
+                    <tr><th>Pueblo: <input type="text" id="nombre" name="nombre"></th>
+                        <th>Habitantes: <input type="text" id="habitantes" name="habitantes"></th>
+                        <th><input type="submit" onclick="rellenar()"></th>
+                        </tr>
+                    </form>
+                </table>
+            </div>
+        </div>
+        <div id="estado"></div>
+    </body>
+</html>
