@@ -1,60 +1,71 @@
 <html>
     <head>
         <title>Insertar población y habitatnes</title>
-        
-        <script type="application/javascript">
-        
+        <style type="text/css">
+            estado>th, td {
+                            border: 1px solid black;
+                            width: 100;
+                            height: 30;
+                            text-align: left;
 
-        function cargar(){
-            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+}
+}
+            
+     
+     
+     
+         </style>
+        <script type="application/javascript">
+        var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+
+        function mostrarDATA(){
+            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM DATA', [], function (tx, resultados) {
                     var len = resultados.rows.length; 
-                    msg = "<p>Encontrados " + len + " registros:</p>"; 
+                    msg = "<p>Encontrados " + len + " registros:</p><table>"; 
                     estado.innerHTML = msg;
                     for (i = 0; i < len; i++){
-                        msg+= '<p><b>' + resultados.rows.item(i).nombre + '</b> ' + resultados.rows.item(i).habitantes  + '<input type="button" value="Eliminar" onclick="eliminar('+ "'" +  resultados.rows.item(i).nombre + "'," + resultados.rows.item(i).habitantes +')">'+ '</p>';
+                        msg+= '<tr><td><b>' + resultados.rows.item(i).nombre + '</b></td><td> ' + resultados.rows.item(i).habitantes  + '</td><td><input type="button" value="Eliminar" onclick="eliminarFila('+ "'" +  resultados.rows.item(i).nombre + "'," + resultados.rows.item(i).habitantes +')">'+ '</td></tr>';
                     }
                 estado.innerHTML = msg;
                 });
             });
         }
-        function rellenar(){
-            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+        function insertarFila(){
+            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                var nomb = nombre.value;
-                var hab = habitantes.value;
                 tx.executeSql('CREATE TABLE IF NOT EXISTS DATA (nombre unique, habitantes)');
-                tx.executeSql('INSERT INTO DATA (nombre, habitantes) VALUES ("' + nomb + '",' + hab + ')');
+                tx.executeSql('INSERT INTO DATA (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
             });
-            cargar();
+            mostrarDATA();
         }
-        function eliminar(nombre, habitantes){
+        function eliminarFila(nombre, habitantes){
             var nomb = nombre;
             var hab = habitantes;
-            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
                 tx.executeSql('DELETE FROM DATA WHERE nombre = "' + nomb + '" AND habitantes = ' + hab + ';');
             });
-            cargar();
+            mostrarDATA();
         }
         
         </script>
     </head>
-    <body onload="cargar()">
+    <body onload="mostrarDATA()">
         <div id="principal">
             <h1>Insertar población y habitantes</h1>
             <div id="productos">
                 <table>
                     <form id="form" action="" method="post" >
-                    <tr><th>Pueblo: <input type="text" id="nombre" name="nombre"></th>
+                    <tr><th>Población: <input type="text" id="nombre" name="nombre"></th>
                         <th>Habitantes: <input type="text" id="habitantes" name="habitantes"></th>
-                        <th><input type="button" value="Añadir" onclick="rellenar()"></th>
+                        <th><input type="button" value="Insertar" onclick="insertarFila()"></th>
                         </tr>
                     </form>
                 </table>
             </div>
         </div>
-        <div id="estado"></div>
+        <div id="estado"></table></div>
     </body>
 </html>
