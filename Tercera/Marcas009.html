@@ -13,21 +13,30 @@
                     msg = "<p>Encontrados " + len + " registros:</p>"; 
                     estado.innerHTML = msg;
                     for (i = 0; i < len; i++){
-                        msg+= '<p><b>' + resultados.rows.item(i).nombre + '</b> ' + resultados.rows.item(i).habitantes + '</p>';
+                        msg+= '<p><b>' + resultados.rows.item(i).nombre + '</b> ' + resultados.rows.item(i).habitantes  + '<input type="button" value="Eliminar" onclick="eliminar('+ "'" +  resultados.rows.item(i).nombre + "'," + resultados.rows.item(i).habitantes +')">'+ '</p>';
                     }
-                estado.innerHTML += msg;
+                estado.innerHTML = msg;
                 });
             });
         }
         function rellenar(){
             var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                var nomb = document.getElementsByName("form").nombre;
-                var hab = document.getElementsByName("form").habitantes;
-                tx.executeSql('CREATE TABLE IF NOT EXISTS DATA (nombre, habitantes)');
+                var nomb = nombre.value;
+                var hab = habitantes.value;
+                tx.executeSql('CREATE TABLE IF NOT EXISTS DATA (nombre unique, habitantes)');
                 tx.executeSql('INSERT INTO DATA (nombre, habitantes) VALUES ("' + nomb + '",' + hab + ')');
             });
-            
+            cargar();
+        }
+        function eliminar(nombre, habitantes){
+            var nomb = nombre;
+            var hab = habitantes;
+            var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM DATA WHERE nombre = "' + nomb + '" AND habitantes = ' + hab + ';');
+            });
+            cargar();
         }
         
         </script>
@@ -40,7 +49,7 @@
                     <form id="form" action="" method="post" >
                     <tr><th>Pueblo: <input type="text" id="nombre" name="nombre"></th>
                         <th>Habitantes: <input type="text" id="habitantes" name="habitantes"></th>
-                        <th><input type="submit" onclick="rellenar()"></th>
+                        <th><input type="button" value="Añadir" onclick="rellenar()"></th>
                         </tr>
                     </form>
                 </table>
