@@ -6,60 +6,89 @@
                             border: 1px solid black;
                             width: 100;
                             height: 30;
-                            text-align: left;
+                            text-align: center;
                         }
+            td:first-child{
+                text-align: left;
+                        }           
+            table{
+                margin: auto;
+            }
+            body{
+                text-align: center;
+            }
         </style>
         <script type="application/javascript">
-        var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+        var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024); //las variables ahora son locales a las funciones por lo que la declaramos aquí y funciona para todas;
 
         function mostrarDATA(){
-            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                tx.executeSql('SELECT * FROM DATA', [], function (tx, resultados) {
-                    var len = resultados.rows.length; 
-                    msg = "<p>Encontrados " + len + " registros:</p><table>"; 
+                tx.executeSql('SELECT * FROM PoblacionHabitantes ORDER BY habitantes DESC;', [], function (tx, resultados) {
+                    var len = resultados.rows.length;
+                    if(len == 0) 
+                        msg = "<p>No existen registros para esta tabla</p>"; 
+                    else if(len == 1) 
+                        msg = "<p>Encontrado " + len + " registro:</p><table><tr></tr><th>Población</th><th>Habitantes</th></tr>"; 
+                        else
+                            msg = "<p>Encontrados " + len + " registros:</p><table><tr></tr><th>Población</th><th>Habitantes</th></tr>"; 
                     estado.innerHTML = msg;
                     for (i = 0; i < len; i++){
-                        msg+= '<tr><td><b>' + resultados.rows.item(i).nombre + '</b></td><td> ' + resultados.rows.item(i).habitantes  + '</td><td><input type="button" value="Eliminar" onclick="eliminarFila('+ "'" +  resultados.rows.item(i).nombre + "'," + resultados.rows.item(i).habitantes +')">'+ '</td></tr>';
+                        msg+= '<tr><td><b>' + 
+                            resultados.rows.item(i).nombre + 
+                            '</b></td><td> ' + 
+                            resultados.rows.item(i).habitantes  + 
+                            '</td><td><input type="button" value="Eliminar" onclick="eliminarFila(' + 
+                            "'" +  resultados.rows.item(i).nombre + "'," + 
+                            resultados.rows.item(i).habitantes +')">' + 
+                            '</td></tr>';
                     }
                 estado.innerHTML = msg;
                 });
             });
         }
         function insertarFila(){
-            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXISTS DATA (nombre unique, habitantes)');
-                tx.executeSql('INSERT INTO DATA (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
+                //alert('INSERT INTO PoblacionHabitantes (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS PoblacionHabitantes (nombre unique, habitantes)');
+                tx.executeSql('INSERT INTO PoblacionHabitantes (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
             });
-            mostrarDATA();
         }
         function eliminarFila(nombre, habitantes){
             var nomb = nombre;
             var hab = habitantes;
-            //var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                tx.executeSql('DELETE FROM DATA WHERE nombre = "' + nomb + '" AND habitantes = ' + hab + ';');
+                tx.executeSql('DELETE FROM PoblacionHabitantes WHERE nombre = "' + nomb + '" AND habitantes = ' + hab + ';');
             });
-            mostrarDATA();
+            form.submit();
+            //mostrarDATA();
         }
         
         </script>
     </head>
     <body onload="mostrarDATA()">
-        <div id="principal">
+        <div id="principal" >
             <h1>Insertar población y habitantes</h1>
             <div id="productos">
                 <table>
                     <form id="form" action="" method="post">
-                    <tr><th>Población: <input type="text" id="nombre" name="nombre"></th>
-                        <th>Habitantes: <input type="text" id="habitantes" name="habitantes"></th>
-                        <th><input type="button" value="Insertar" onclick="insertarFila()"></th>
-                        </tr>
+                    <tr><th>Población</th>
+                        <th>Habitantes</th>
+                    </tr>
+                    <tr><th><input type="text" id="nombre" name="nombre"></th>
+                        <th><input type="text" id="habitantes" name="habitantes"></th>
+                    </tr>
+                    <tr><th colspan="2">
+                        <input type="submit" value="Insertar" onclick="insertarFila()">
+                        </th>
+                    </tr>
                     </form>
                 </table>
             </div>
         </div>
+        <br><br><br><br>
         <div id="estado"></table></div>
     </body>
 </html>
