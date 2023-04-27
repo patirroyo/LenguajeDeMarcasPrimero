@@ -10,7 +10,13 @@
                         }
             td:first-child{
                 text-align: left;
-                        }           
+                        } 
+            td{
+                text-align: right;
+                        } 
+            td:last-child{
+                text-align: center;
+                        }
             table{
                 margin: auto;
             }
@@ -39,8 +45,7 @@
                             '</b></td><td> ' + 
                             resultados.rows.item(i).habitantes  + 
                             '</td><td><input type="button" value="Eliminar" onclick="eliminarFila(' + 
-                            "'" +  resultados.rows.item(i).nombre + "'," + 
-                            resultados.rows.item(i).habitantes +')">' + 
+                            "'" +  resultados.rows.item(i).nombre + "')" + '">' + 
                             '</td></tr>';
                     }
                 estado.innerHTML = msg;
@@ -55,12 +60,10 @@
                 tx.executeSql('INSERT INTO PoblacionHabitantes (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
             });
         }
-        function eliminarFila(nombre, habitantes){
-            var nomb = nombre;
-            var hab = habitantes;
+        function eliminarFila(nombre){
            // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
             db.transaction(function (tx) {
-                tx.executeSql('DELETE FROM PoblacionHabitantes WHERE nombre = "' + nomb + '" AND habitantes = ' + hab + ';');
+                tx.executeSql('DELETE FROM PoblacionHabitantes WHERE nombre = "' + nombre + '";');
             });
             form.submit();
             //mostrarDATA();
