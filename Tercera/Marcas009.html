@@ -68,6 +68,18 @@
             form.submit();
             //mostrarDATA();
         }
+        function vaciarDB(){
+            db.transaction(function (tx) {
+                tx.executeSql('DROP TABLE PoblacionHabitantes;');
+            });
+            form.submit();
+        }
+        function eliminarUltimo(){
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM PoblacionHabitantes WHERE ROWID = (SELECT MAX(ROWID) FROM PoblacionHabitantes);');
+            });
+            form.submit();
+        }
         
         </script>
     </head>
@@ -93,5 +105,14 @@
         </div>
         <br><br><br><br>
         <div id="estado"></table></div>
+        <div id="vaciar">
+            <br>
+                <tr>
+                    <input type="button" value="Eliminar Último Regristro" onclick="eliminarUltimo()">
+                </tr>
+                <tr>
+                    <input type="button" value="Vaciar Tabla" onclick="vaciarDB()">
+                </tr>
+        </div>
     </body>
 </html>
