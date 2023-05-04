@@ -20,6 +20,8 @@
                             var antiClockWise = ((i%2)==0?false:true);
                             ctx.arc(x,y,radio,anguloInicio,anguloFin,antiClockWise);
                             //las circunferencias se pueden dibujar en el sentido de las agujas del reloj o a la inversa
+                            //la funcion arc sobre un objeto de la clase context nos permite dibujar un arco, espera recibir 6 parametros; el sexto es para indicar si el arco se dibuja en sentido de las agujas del reloj o en sentido contrario, por defecto es false que es en sentido de las agujas del reloj.
+                            //el primero y el segundo son las coordenadas del centro del circulo, el tercero es el radio, el cuarto y el quinto son el angulo inicial y el angulo final, en radianes.
                             if(i>1){
                                 ctx.fill();
                             }

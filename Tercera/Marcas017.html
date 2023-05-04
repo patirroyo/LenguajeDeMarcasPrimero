@@ -2,7 +2,7 @@
 
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>Ejercicio 7 de Canvas</title>
+    <title>Ejercicio 8 de Canvas</title>
     <script type="application/javascript">
         window.onload = function(){
             var canvas = document.getElementById("canvas");
@@ -10,10 +10,11 @@
                 var ctx = canvas.getContext("2d");
                 for (var i = 0; i < 6; i++)
                     for (var j = 0; j < 6; j++){
-                        ctx.fillStyle='rgb('+Math.floor(255-42.5*i)+','+Math.floor(255-42.5*j)+',0)'; 
-                        //conforme cambia la posicion en el eje de las x y las y
-                        //tambien va cambiando de color, asi que en realidad no esya haciendo ningun degradado simplemente cambia de color 
-                        ctx.fillRect(j*25,i*25,25,25); //para dibujar un cuadrado en el canvas se usa strokeRect
+                        ctx.strokeStyle = 'rgb(0,' + Math.floor(255 - 42.5 * i) + ',' + 
+                        Math.floor(255 - 42.5 * j) + ')';
+                        ctx.beginPath();
+                        ctx.arc(12.5 + j * 25, 12.5 + i * 25, 10, 0, Math.PI * 2, true); // 10 es el radio del circulo, 0 es el angulo inicial, Math.PI*2 es el angulo final, true es para que se dibuje en sentido de las manecillas del reloj.
+                        ctx.stroke(); //stroke es para dibujar la linea
                     }
                 }
         };
