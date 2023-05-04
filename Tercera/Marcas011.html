@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Ejercicio 2 de Canvas</title>
+        <style type="text/css">
+            
+        </style>
+        <script type="application/javascript">
+            window.onload = function(){
+                var canvas = document.getElementById("canvas");
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext("2d");
+                    ctx.fillRect(25,25,100,100);
+                    ctx.clearRect(45,45,60,60); //quita una zona
+                    ctx.strokeRect(50,50,50,50); //es la parte de fuera del rectangulo, solo dibujamos el contorno
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="150" height="150"></canvas>
+
+    </body>
+</html>

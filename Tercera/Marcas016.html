@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Ejercicio 7 de Canvas</title>
+    <script type="application/javascript">
+        window.onload = function(){
+            var canvas = document.getElementById("canvas");
+            if (canvas.getContext){
+                var ctx = canvas.getContext("2d");
+                for (var i = 0; i < 6; i++)
+                    for (var j = 0; j < 6; j++){
+                        ctx.fillStyle='rgb('+Math.floor(255-42.5*i)+','+Math.floor(255-42.5*j)+',0)'; 
+                        //conforme cambia la posicion en el eje de las x y las y
+                        //tambien va cambiando de color, asi que en realidad no esya haciendo ningun degradado simplemente cambia de color 
+                        ctx.fillRect(j*25,i*25,25,25);
+                    }
+                }
+        };
+
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+
+</html>

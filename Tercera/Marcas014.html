@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Ejercicio 5 de Canvas</title>
+        <style type="text/css">
+            
+        </style>
+        <script type="application/javascript">
+            window.onload = function(){
+                var canvas = document.getElementById("canvas");
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext("2d");
+                    for(var i=0; i<4; i++){
+                        for(var j=0; j<3; j++){
+                            ctx.beginPath();
+                            var x = 25 + (j*50);
+                            var y = 25 + (i*50);
+                            var radio = 20;
+                            var anguloInicio = 0;
+                            var anguloFin = Math.PI + ((Math.PI * j)/2); //se da en medidas de radianes
+                            var antiClockWise = ((i%2)==0?false:true);
+                            ctx.arc(x,y,radio,anguloInicio,anguloFin,antiClockWise);
+                            //las circunferencias se pueden dibujar en el sentido de las agujas del reloj o a la inversa
+                            if(i>1){
+                                ctx.fill();
+                            }
+                            else{
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="200" height="200"></canvas>
+
+    </body>
+</html>

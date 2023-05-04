@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Ejercicio 6 de Canvas</title>
+        <style type="text/css">
+            
+        </style>
+        <script type="application/javascript">
+            window.onload = function(){
+                var canvas = document.getElementById("canvas");
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext("2d");
+                    ctx.beginPath();
+                    ctx.arc(75,75,50,0,Math.PI*2,true);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.fillStyle = "#FFF";
+                    
+                    ctx.beginPath();
+                    ctx.arc(75,75,35,0,Math.PI,false);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(60,65,5,0,Math.PI*2,false);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(90,65,5,0,Math.PI*2,false);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="200" height="200"></canvas>
+
+    </body>
+</html>

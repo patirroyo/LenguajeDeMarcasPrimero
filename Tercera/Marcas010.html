@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Ejercicio 1 de Canvas</title>
+        <style type="text/css">
+            
+        </style>
+        <script type="application/javascript">
+            window.onload = function(){
+                var canvas = document.getElementById("canvas");
+                if (canvas.getContext) {
+                    var ctx = canvas.getContext("2d");//Context es el objeto que nos permite dibujar en el canvas, como si fuera el graphics de java.
+                    ctx.fillStyle = "rgb(200,0,0)";
+                    ctx.fillRect(10,10,50,55);
+                    ctx.fillStyle = "rgba(0,0,200,0.5)"; //al usar rbga podemos darle opacidad
+                    ctx.fillRect(30,30,55,50);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="150" height="150"></canvas>
+
+    </body>
+</html>
