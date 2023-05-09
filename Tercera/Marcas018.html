@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Ejercicio 9 de Canvas</title>
+    <script type="application/javascript">
+        window.onload = function(){
+            var canvas = document.getElementById("canvas");
+            if (canvas.getContext){
+                var ctx = canvas.getContext("2d");
+                var gradiente = ctx.createLinearGradient(0,0,0, canvas.height);
+
+                gradiente.addColorStop(0, "000");
+                gradiente.addColorStop(1, "00f");
+                
+                ctx.fillStyle = gradiente;
+                ctx.fillRect(0,0,canvas.width, canvas.height);
+                
+                }
+        };
+
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>Ejercicio Prueba de Examen</title>
+        <!-- ES LO MISMO QUE EL ANTERIOR PERO SOLO SE DIBUJA EL CONTORNO -->
+        <style type="text/css">
+            
+        </style>
+        <script type="application/javascript">
+            var puntos = new Array(2);
+            var db = openDatabase('Triangulos', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            var len;
+            window.onload = function dibujar(){
+                var canvas = document.getElementById("canvas");
+                if (canvas.getContext) {
+                    db.transaction(function (tx) {
+                        tx.executeSql('SELECT * FROM DATOS', [], function (tx, resultados) {
+                            len = resultados.rows.length;
+                            var ctx = canvas.getContext("2d");
+                            ctx.beginPath();
+                            for (i = 0; i < len; i++){
+                                if(i == 0)
+                                    ctx.moveTo(resultados.rows.item(i).X,resultados.rows.item(i).Y);
+                                else{
+                                    ctx.lineTo(resultados.rows.item(i).X,resultados.rows.item(i).Y);
+                                }
+                            }
+                            ctx.closePath(); // cerramos el camino y cerramos la línea
+                            ctx.stroke(); // rellenamos las líneas
+                        });
+                });
+            mostrarDATA();        
+            }
+        }
+        function mostrarDATA(){
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM DATOS;', [], function (tx, resultados) {
+                    var len = resultados.rows.length;
+                    if(len == 0) 
+                        msg = "<p>No existen registros para esta tabla</p>"; 
+                    else if(len == 1) 
+                        msg = "<p>Encontrado " + len + " registro:</p><table><tr></tr><th>X</th><th>Y</th></tr>"; 
+                        else
+                            msg = "<p>Encontrados " + len + " registros:</p><table><tr></tr><th>X</th><th>Y</th></tr>"; 
+                    estado.innerHTML = msg;
+                    for (i = 0; i < len; i++){
+                        msg+= '<tr><td><b>' + 
+                            resultados.rows.item(i).X + 
+                            '</b></td><td> ' + 
+                            resultados.rows.item(i).Y  + 
+                            '</td><td><input type="button" value="Eliminar" onclick="eliminarFila(' + 
+                            "'" +  resultados.rows.item(i).X + "')" + '">' + 
+                            '</td></tr>';
+                    }
+                estado.innerHTML = msg;
+                });
+            });
+        }
+        function insertarFila(){
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                //alert('INSERT INTO PoblacionHabitantes (nombre, habitantes) VALUES ("' + nombre.value + '",' + habitantes.value + ')');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS DATOS (X, Y)');
+                tx.executeSql('INSERT INTO DATOS VALUES ("' + X.value + '",' + Y.value + ')');
+            });
+        }
+        function vaciarDB(){
+            db.transaction(function (tx) {
+                tx.executeSql('DROP TABLE DATOS;');
+            });
+            form.submit();
+        }
+        function eliminarUltimo(){
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM DATOS WHERE ROWID = (SELECT MAX(ROWID) FROM DATOS);');
+            });
+            form.submit();
+        }
+        function eliminarFila(X){
+           // var db = openDatabase('Poblados', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('DELETE FROM DATOS WHERE X = "' + X + '";');
+            });
+            form.submit();
+            //mostrarDATA();
+        }
+        </script>
+    </head>
+    <body>
+        <div id="principal" >
+            <h1>Insertar X e Y</h1>
+            <div id="productos">
+                <table>
+                    <form id="form" action="" method="post">
+                    <tr><th>X</th>
+                        <th>Y</th>
+                    </tr>
+                    <tr><th><input type="text" id="X" name="X"></th>
+                        <th><input type="text" id="Y" name="Y"></th>
+                    </tr>
+                    <tr><th colspan="2">
+                        <input type="submit" value="Insertar" onclick="insertarFila()">
+                        </th>
+                    </tr>
+                    </form>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div id="estado"></table></div>
+        <div id="vaciar">
+            <br>
+                <tr>
+                    <input type="button" value="Eliminar Último Regristro" onclick="eliminarUltimo()">
+                </tr>
+                <tr>
+                    <input type="button" value="Vaciar Tabla" onclick="vaciarDB()">
+                </tr>
+        </div>
+        <br><br>
+        <canvas id="canvas" width="600" height="600"></canvas>
+
+    </body>
+</html>

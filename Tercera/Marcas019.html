@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Ejercicio 10 de Canvas</title>
+    <script type="application/javascript">
+        window.onload = function(){
+            var canvas = document.getElementById("canvas");
+            if(canvas.getContext){
+                var ctx = canvas.getContext("2d");
+                var gradiente = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/2, 350);
+
+                gradiente.addColorStop(0, "fff");
+                gradiente.addColorStop(1, "0f0");
+                
+                ctx.fillStyle = gradiente;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        };
+
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas" width="150" height="150"></canvas>
+</body>
+
+</html>
