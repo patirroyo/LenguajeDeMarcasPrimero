@@ -10,8 +10,8 @@
                 var ctx = canvas.getContext("2d");
                 var gradiente = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 0, canvas.width/2, canvas.height/2, canvas.width/2, 350);
 
-                gradiente.addColorStop(0, "fff");
-                gradiente.addColorStop(1, "0f0");
+                gradiente.addColorStop(0, "#fff");
+                gradiente.addColorStop(1, "#0f0");
                 
                 ctx.fillStyle = gradiente;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
