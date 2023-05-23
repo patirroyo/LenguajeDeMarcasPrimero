@@ -1,0 +1,112 @@
+<!-- Insertar mediante código varios registros en la tabla de “Provincias” que contiene los campos:
+- nombre (string)
+- numHabitantes (int)
+- extension (int)
+- numPoblaciones (int)
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Examen 3 evaluacion</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        
+        <script type="application/javascript">
+        var db = openDatabase('Provincias', '1.0', 'Comentario sobre DB', 2 * 1024 * 1024);
+        function cargar(){
+            db.transaction(function (tx) {
+                tx.executeSql('DROP TABLE IF EXISTS Provincias')
+                tx.executeSql('CREATE TABLE IF NOT EXISTS Provincias (codigo int unique, nombre string, numHabitantes int, extension int, numPoblaciones int)');
+                tx.executeSql('INSERT INTO Provincias VALUES (1, "Zaragoza", 1000000, 100000, 222)');
+                tx.executeSql('INSERT INTO Provincias VALUES (2, "Teruel", 40000, 40000, 123)');
+                tx.executeSql('INSERT INTO Provincias VALUES (3, "Huesca", 200000, 200000, 156)');
+                tx.executeSql('INSERT INTO Provincias VALUES (4, "Madrid", 3000000, 1000000, 333)');
+                tx.executeSql('INSERT INTO Provincias VALUES (5, "Barcelona", 2000000, 2000000, 321)');
+                tx.executeSql('INSERT INTO Provincias VALUES (6, "Valencia", 3000000, 3000000, 267)');
+                tx.executeSql('INSERT INTO Provincias VALUES (7, "Sevilla", 2000000, 4000000, 215)');
+            });
+            mostrarProvincias();
+        }
+
+        //Mostrar un listado con los datos de las provincias ordenados en orden alfabético. 2.5 puntos
+
+
+
+        function mostrarProvincias(){
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM Provincias ORDER BY nombre ASC;', [], function (tx, resultados) {
+                    var len = resultados.rows.length;
+                    if(len == 0) 
+                        msg = "<p>No existen registros para esta tabla</p>"; 
+                    else if(len == 1) 
+                        msg = "<p>Encontrado " + len + " </p><table><tr></tr><th>Código</th><th>Nombre</th><th>numhabitantes</th><th>extension</th><th>numPoblaciones</th></tr>"; 
+                        else
+                            msg = "<p>Encontrados " + len + " registros:</p><table><tr></tr><th>Código</th><th>Nombre</th><th>numhabitantes</th><th>extension</th><th>numPoblaciones</th></tr>"; 
+                    estado.innerHTML = msg;
+                    for (i = 0; i < len; i++){
+                        msg+= '<tr><td><b>' + 
+                            resultados.rows.item(i).codigo + 
+                            '</b></td><td> ' + 
+                            resultados.rows.item(i).nombre  +
+                            '<td>' + 
+                            resultados.rows.item(i).numHabitantes + 
+                            '</td><td> ' + 
+                            resultados.rows.item(i).extension + 
+                            '</td><td> ' +
+                            resultados.rows.item(i).numPoblaciones + 
+                            '</td><td> ' 
+                            ;
+                    }
+                estado.innerHTML = msg;
+                });
+            });
+        }
+        /*Debajo pondréis 3 botones, al pulsar el primero insertaréis en la sessionStorage el nombre y el número de habitante ordenados descendentemente por nº de habitantes y mostraréis el contenido del sessionStorage por pantalla. El segundo botón hará lo mismo pero ordenado por extensión. El tercer botón igual, pero ordenado por nº de poblaciones.*/
+        function almacenar(orden){
+            sesion.innerHTML = "<h3>Ordenado por " + orden + "</h3>";
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM Provincias ORDER BY '+ orden + ' DESC;', [], function (tx, resultados) {
+                    sessionStorage.clear();
+                    var len = resultados.rows.length;
+                    //var nombres = new Array();
+                    //var habitantes = new Array();
+                    for(i = 0; i < len; i++){
+                        nombres[i] = resultados.rows.item(i).nombre;
+                        habitantes[i] = resultados.rows.item(i).numHabitantes;
+                        sessionStorage.setItem(i,resultados.rows.item(i).nombre);
+                        
+                    }
+                    sesion.innerHTML += "<table><tr><td>Nombre</td></tr>";
+                    for(i = 0; i < sessionStorage.length; i++){
+                        sesion.innerHTML += "<table><tr><td>" + sessionStorage.getItem(i) + "</td></tr>";
+                            
+                        }
+                        sesion.innerHTML += "</table>"
+                    
+                });
+            });
+            
+        }
+            
+        
+        </script>
+    </head>
+    <body onload="cargar()">
+        <div id="estado"></table></div>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td><input type="button" value="Ordenar" onclick="almacenar('numHabitantes')">  Insertar en la sessionStorage el nombre y el número de habitante ordenados descendentemente por Nº DE HABITANTES y mostrar el contenido del sessionStorage por pantalla.</td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Ordenar" onclick="almacenar('extension')">  Insertar en la sessionStorage el nombre y el número de habitante ordenados descendentemente por EXTENSIÓN y mostrar el contenido del sessionStorage por pantalla.</td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Ordenar" onclick="almacenar('numPoblaciones')">  Insertar en la sessionStorage el nombre y el número de habitante ordenados descendentemente por Nº DE POBLACIONES y mostrar el contenido del sessionStorage por pantalla.</td>
+            </tr>
+        </table>
+        <br>
+        <div id="sesion"></table></div>
+    </body>
+</html>
