@@ -14,7 +14,7 @@
                 cesta.innerHTML = "<table class='pro' width=90%><tr><th>PRO</th><th align='center'>UNDS</th><th>Eliminar</th></tr></table>";
                 for(i = 0; i < sessionStorage.length; i++){
                     cesta.innerHTML += "<table class='pro' width=90%><tr><td align='left'><img src ='iconos2/" + 
-                                        sessionStorage.key(i) + ".jpg'> " + sessionStorage.key(i) + 
+                                        sessionStorage.key(i) + ".jpg'>" + sessionStorage.key(i) + 
                                         "</td><td align='center'>" + sessionStorage.getItem(sessionStorage.key(i)) + 
                                         "</td><td><img src='iconos2/eliminar.jpg' onclick=" + "eliminar('"
                                         + sessionStorage.key(i) + "')" + "></td></tr></table>";
@@ -53,7 +53,7 @@
                 tx.executeSql('CREATE TABLE IF NOT EXISTS COMPRA (codigo, cantidad, cliente)');
                 
                 for(i = 0; i < cantidadArticulos; i++)
-                    tx.executeSql('INSERT INTO COMPRA (codigo, cantidad, nombre) VALUES("' + articulos[i] + '",' + cantidad[i] + ',"' + cliente +'")');
+                    tx.executeSql('INSERT INTO COMPRA (codigo, cantidad, cliente) VALUES("' + articulos[i] + '",' + cantidad[i] + ',"' + cliente +'")');
                 alert("Compra realizada");
                 sessionStorage.clear();
                 ver();
